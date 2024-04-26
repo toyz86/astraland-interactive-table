@@ -13,8 +13,8 @@
     "build": "webpack --mode production",
     "electron": "ELECTRON_DISABLE_SECURITY_WARNINGS=true electron .",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . Astraland Interactive Table --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Astraland Interactive Table\"",    
-    "package-linux": "electron-packager . Astraland Interactive Table --overwrite --asar=true --platform=linux --arch=x64 --icon=icons/png/1024x1024.png --prune=true --out=release-builds"    
+    "package-win": "electron-packager . Astraland Interactive Table --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Astraland Interactive Table\"",
+    "package-linux": "electron-packager . Astraland Interactive Table --overwrite --asar=true --platform=linux --arch=x64 --icon=icons/png/1024x1024.png --prune=true --out=release-builds"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.3.0",
@@ -32,6 +32,7 @@
     "electron-icon-maker": "^0.0.5",
     "electron-packager": "^17.1.2",
     "electron-squirrel-startup": "^1.0.0",
+    "hover-effect": "^1.2.1",
     "swiper": "^11.1.0"
   }
 }

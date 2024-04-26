@@ -2,22 +2,24 @@ const branddashboard = document.querySelector(".brand-dashboard");
 const nav = document.querySelector(".navigation")
 
 // Animation Astra icon on BEGINING
-document.querySelector('.start-btn').addEventListener('click', function() {
-  gsap.to('.btn-text', { yPercent: -100, opacity: 0 })
-  gsap.to('.logo-mask', 1, { scale: 200, yPercent: -800, delay: 0.3, ease: "power2.in" });
-  gsap.to('.logo-mask', { delay:0.8, display: 'none' });
-  gsap.to('.bg-overlay', { opacity: 0, delay: 0.8 });
-  gsap.to('.navy-overlay', { delay: 1, visibility: 'visible', opacity: 1, ease: "power2.out" });
-  gsap.to(nav, { delay:0.8, opacity: 1, display: 'flex' });
-
-  // show Navigation after button clicked
-  gsap.to('.logo-home', { autoAlpha: 1, delay: 1.3 });
-  gsap.to('.cta-button', { autoAlpha: 1, delay: 1.3 });
-  gsap.to('.next-prev-wrapper', { autoAlpha: 1, delay: 1.4 });
-  gsap.to('.brand-wrapper', { display: 'block', autoAlpha: 1, delay: 1.4 } );
-  gsap.to('.line-divider', { display: 'block', autoAlpha: 1, delay: 1.4 } );
-  branddashboard.classList.add("isActive");
-}) 
+function buttonOnStated() {
+  document.querySelector('.start-btn').addEventListener('click', function() {
+    gsap.to('.btn-text', { yPercent: -100, opacity: 0 })
+    gsap.to('.logo-mask', 1, { scale: 200, yPercent: -800, delay: 0.3, ease: "power2.in" });
+    gsap.to('.logo-mask', { delay:0.8, display: 'none' });
+    gsap.to('.bg-overlay', { opacity: 0, delay: 0.8 });
+    gsap.to('.navy-overlay', { delay: 1, visibility: 'visible', opacity: 1, ease: "power2.out" });
+    gsap.to(nav, { delay:0.8, opacity: 1, display: 'flex' });
+  
+    // show Navigation after button clicked
+    gsap.to('.logo-home', { autoAlpha: 1, delay: 1.3 });
+    gsap.to('.cta-button', { autoAlpha: 1, delay: 1.3 });
+    gsap.to('.next-prev-wrapper', { autoAlpha: 1, delay: 1.4 });
+    gsap.to('.brand-wrapper', { display: 'block', autoAlpha: 1, delay: 1.4 } );
+    gsap.to('.line-divider', { display: 'block', autoAlpha: 1, delay: 1.4 } );
+    branddashboard.classList.add("isActive");
+  }) 
+}
 
 // Hide Navigation on first load
 // Redirect to Home
@@ -120,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
-  }, { threshold: 0.5 }); // Gunakan threshold 0.5 untuk memicu saat setengah slide masuk dalam viewport
+  }, { threshold: 0.5 }); 
 
   // List of slides class
   const slides = document.querySelectorAll('.slides');
@@ -129,9 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
   slides.forEach(slide => {
     observer.observe(slide);
   });
-
-  // const loader = document.querySelector('.loader');
-  // gsap.to(loader, { opacity: 0, duration: 2, display: 'none' })
 });
 
 gsap.to(".ring", {
@@ -153,12 +152,17 @@ document.querySelectorAll('.picker-items').forEach((pickerItem, index) => {
     // Remove highlight from all previously highlighted elements
     document.querySelectorAll('.picker-items, .logo-items-wrapper').forEach(item => {
       item.classList.remove('highlight');
-      gsap.to(item.querySelector('.link-to-project'), 0.3, { opacity: 0, display: 'none' });
+      const linkToProject = item.querySelector('.link-to-project');
+      if (linkToProject) {
+        gsap.to(linkToProject, 0.5, { y: 100, opacity: 0, display: 'none' });
+      }
     });
 
     // Highlight the clicked picker item
     pickerItem.classList.add('highlight');
-    gsap.to(moreBtn, 0.3, { opacity: 1, display: 'flex' })
+    if (moreBtn) {
+      gsap.to(moreBtn, 0.5, { y: 0, opacity: 1, display: 'flex', ease: "elastic.out(1,0.5)" });
+    }
 
     const correspondingLogoItem = document.querySelector(`.logo-items-wrapper[data-img="${selectedImg}"]`);
     if (correspondingLogoItem) {
@@ -168,17 +172,6 @@ document.querySelectorAll('.picker-items').forEach((pickerItem, index) => {
     // Determine the index of the clicked picker item
     const selectedIndex = index + 3; // Offset by 3 to account for the first three sections (mainpage, about, milestone)
     const anyPickerHighlighted = Array.from(document.querySelectorAll('.picker-items')).some(item => item.classList.contains('highlight'));
-
-    // If no picker item is highlighted, disable the next button
-    // if (!anyPickerHighlighted) {
-    //   btnnext.classList.add('nav-disabled');
-    // } else {
-    //   btnnext.classList.remove('nav-disabled');
-    // }
-
-    // Show the corresponding section
-    // showSection(selectedIndex);
-
   });
 });
 
@@ -191,13 +184,17 @@ document.querySelectorAll('.logo-items-wrapper').forEach((item, index) => {
     // Remove highlight from all previously highlighted elements
     document.querySelectorAll('.picker-items, .logo-items-wrapper').forEach(element => {
       element.classList.remove('highlight');
-      gsap.to(element.querySelector('.link-to-project'), 0.3, { opacity: 0, display: 'none' });
+      const linkToProject = element.querySelector('.link-to-project');
+      if (linkToProject) {
+        gsap.to(linkToProject, 0.5, { y: 100, opacity: 0, display: 'none' });
+      }
     });
 
     // Highlight the clicked logo item
     item.classList.add('highlight');
-    gsap.to(moreBtn, 0.3, { opacity: 1, display: 'flex' })
-
+    if (moreBtn) {
+      gsap.to(moreBtn, 0.5, { y: 0, opacity: 1, display: 'flex', ease: "elastic.out(1,0.5)" });
+    }
 
     if (correspondingPickerItem) {
       correspondingPickerItem.classList.add('highlight');
@@ -205,9 +202,6 @@ document.querySelectorAll('.logo-items-wrapper').forEach((item, index) => {
 
     // Determine the index of the clicked picker item
     const selectedIndex = index + 3; // Offset by 3 to account for the first three sections (mainpage, about, milestone)
-
-    // Show the corresponding section
-    // showSection(selectedIndex);
   });
 });
 
@@ -258,16 +252,14 @@ function hideMilestoneNav() {
   }
 }
 
-const breadCrumps = document.querySelectorAll('.breadcrump-items');
-const contents = document.querySelectorAll('.content');
 
-// Function untuk menampilkan section berdasarkan indeks
+// Show each sections based on Index
 function showSection(index) {
   // Semua section dimatikan
   sections.forEach(function(section) {
     section.style.display = 'none';
   });
-  // Section yang ditunjukkan sesuai dengan indeks ditampilkan
+  // Show Current sections index
   sections[index].style.display = 'block';
 
   const slideItems = sections[index].querySelectorAll('.slides-items');
@@ -275,15 +267,15 @@ function showSection(index) {
   
   slideItems.forEach((item, i) => {
     if (i === 0) {
-      item.style.display = 'block'; // Menampilkan .slides-items pertama
+      item.style.display = 'block'; // Show the first slide items
       item.classList.add('active'); 
     } else {
-      item.style.display = 'none'; // Menyembunyikan .slides-items lainnya
+      item.style.display = 'none'; // Hide the rest of slide items
       item.classList.remove('active');
 
       const breadCrump = item.querySelector('.breadcrump-items'); // Get the first breadcrumb element within the current slide item
       const contents = item.querySelector('.content');
-      // console.log('Found breadcrumb:', breadCrump); // Debugging: Check if breadcrumb is found
+
       if (breadCrump) {
         breadCrump.classList.add('is-Active'); // Add the class 'is-Active' to the first breadcrumb element
         // console.log('Added is-Active class to breadcrumb:', breadCrump); // Debugging: Check if class is added
@@ -407,11 +399,8 @@ function updateNavigation(prevBtns, nextBtns, activeIndex, numSlideItems) {
 // Add click funtion link to project
 document.querySelectorAll('.link-to-project').forEach(link => {
   link.addEventListener('click', function() {
-    // Dapatkan id dari elemen picker-item terkait
     const pickerItemId = this.closest('.picker-items').id;
-    // Temukan index dari elemen dengan id yang sesuai di dalam array sections
     const targetIndex = Array.from(sections).findIndex(section => section.id === pickerItemId);
-    // Tampilkan bagian terkait
     showSection(targetIndex);
   });
 });
@@ -466,475 +455,76 @@ btnback.addEventListener('click', function() {
     showSection(currentIndex);
   }
 });
+
 hideNavigation();
 
 // Tampilkan section pertama saat halaman dimuat
 showSection(currentIndex);
 
+const breadCrumps = document.querySelectorAll('.breadcrump-items');
+const contents = document.querySelectorAll('.content');
 const accessbg = document.getElementById('access-content');
-const accessbg2 = document.getElementById('access-content-asya');
 const bgcluster = document.querySelector('.bg-cluster');
-
-
-breadCrumps.forEach((breadCrump, i) => {
-  breadCrump.addEventListener('click', function() {
-    // Hapus 'is-Active' class dari semua breadCrump items
-    breadCrumps.forEach((item) => {
-      item.classList.remove('is-Active');
-    });
-
-    // Tambahkan 'is-Active' class hanya pada breadCrump item yang diklik
-    this.classList.add('is-Active');
-
-    // Perbarui currentIndex berdasarkan indeks breadCrump yang diklik
-    currentIndex = i;
-    console.log('breadcrump index', i)
-    // Perbarui konten dan perilaku berdasarkan currentIndex
-    updateContentAndBehavior();
-  });
-});
 
 // CTA to Milestone
 document.querySelector('.cta-button').addEventListener('click', function(event) {
   event.preventDefault();
   showSection(2);
   
+  // Make Sure each class 'is-Active' and 'd-block' in slide items remove
   breadCrumps.forEach((item) => {
     item.classList.remove('is-Active');
+  });
+
+  contents.forEach((item) => {
+    item.classList.remove('d-block');
+  });
+
+});
+
+breadCrumps.forEach((breadCrump, i) => {
+  breadCrump.addEventListener('click', function() {
+    // remove 'is-Active' class from all breadCrump items
+    breadCrumps.forEach((item) => {
+      item.classList.remove('is-Active');
+    });
+
+    // Add 'is-Active' class only on each breadCrump items when clicked
+    this.classList.add('is-Active');
+
+    // Update currentIndex based on breadCrump index onclick
+    currentIndex = i;
+    console.log('breadcrump index', i)
+    // Update content based on index
+    updateContentAndBehavior();
   });
 });
 
 const navlinks = document.querySelectorAll('.nav-slide');
-document.querySelector('.ammaia').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'lavatera-type-6'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })
-    // itemsNav.style.display = 'none'
 
-    // Tambahkan event listener untuk tombol close di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.ammaia2').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'lavatera-type-7'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.ammaia3').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'lavatera-type-8'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.arumaya1').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'arumaya-1'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.arumaya2').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'arumaya-2'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.arumaya3').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'arumaya-3'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.arumaya4').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'arumaya-4'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.kelimutu7').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'kalimutu-type-7'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.kelimutu9').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'kalimutu-type-9'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.asya-maninjau').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'maninjau'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.ananda-penthouse').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'anandamaya-penthouse'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.sentarum6').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'sentarum-type-6'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.sentarum8').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'sentarum-type-8'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-document.querySelector('.tobalake').addEventListener('click', function(event) {
-  event.preventDefault(); // Mencegah perilaku default dari tautan
-  const sectionId = 'toba-lake'; // Ganti dengan ID modal yang ingin Anda buka
-  const modal = document.getElementById(sectionId);
-  if (modal) {
-    modal.style.display = 'block'; // Tampilkan modal
-    nav.style.display = 'none';
-    navlinks.forEach((navlink,i) => {
-      navlink.style.opacity = 0;
-    })    // Tambahkan event listener untuk tombol close   di dalam modal
-    const closeButton = modal.querySelector('.close');
-    if (closeButton) {  
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-        nav.style.display = 'flex';
-        navlinks.forEach((navlink,i) => {
-          navlink.style.opacity = 1;
-        })
-      });
-    } else {
-      console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${targetId}.`);
-    }
-  } else {
-    console.error(`Modal dengan ID ${targetId} tidak ditemukan.`);
-  }
-});
-
-
-
-// Fungsi untuk memperbarui konten dan perilaku berdasarkan currentIndex
+// Function for content update and used based on currentIndex
 function updateContentAndBehavior() {
-  // Tentukan konten yang sesuai dengan currentIndex
   const currentContent = contents[currentIndex];
 
-  // Semua konten diubah menjadi display: none
   contents.forEach((content) => {
     content.classList.remove('d-block');
   });
 
-  // Konten yang sesuai dengan currentIndex ditampilkan
   currentContent.classList.add('d-block');
 
-  // Setel sumber gambar berdasarkan kondisi tertentu
-  // if (accessbg && bgcluster) {
-  //   if (accessbg.classList.contains('d-block')) {
-  //     // Jika accessbg terlihat, ubah sumber gambar sesuai
-  //     bgcluster.querySelector('img').src = './src/assets/maps/Anandamaya.png';
-  //   } else {
-  //     console.log('ganti gambar lagi')
-  //     // Jika accessbg tidak terlihat, ubah sumber gambar ke nilai lain
-  //     bgcluster.querySelector('img').src = './src/assets/asya/kalimutu/Copy-of-Facade-Front-(Night).jpg';
-  //   }
-  // }
   sections.forEach((section, index) => {
-    // Dapatkan elemen accessbg dan bgcluster di dalam section saat ini
     const accessbg = section.querySelector('.content#access-content');
     const bgCluster = section.querySelector('.bg-cluster img');
 
-    // Cek jika kedua elemen tersebut ditemukan
     if (accessbg && bgCluster) {
-        // Periksa apakah accessbg terlihat atau tidak
-        if (accessbg.classList.contains('d-block')) {
-            // Jika accessbg terlihat, ubah sumber gambar sesuai
-            bgCluster.src = `./src/assets/maps/map-${index + 1}.png`; // Ganti dengan sumber gambar yang sesuai
-        } else {
-            // Jika accessbg tidak terlihat, ubah sumber gambar ke nilai lain
-            bgCluster.src = `./src/assets/hero-images/${index + 1}.jpg`; // Ganti dengan sumber gambar yang sesuai
-        }
+      if (accessbg.classList.contains('d-block')) {
+        bgCluster.src = `./src/assets/maps/map-${index + 1}.png`;
+      } else {
+        bgCluster.src = `./src/assets/hero-images/${index + 1}.jpg`;
+      }
     }
-});
-
+  });
 }
-
-// Pembaruan awal konten dan perilaku berdasarkan currentIndex saat ini
-updateContentAndBehavior();
-
 
 // Toggle Cluster Items
 const clusters = document.querySelectorAll('.cluster-items-wrapper');
@@ -958,38 +548,83 @@ for (let h = 0; h < collapsibleHeaders.length; h++) {
   });
 }
 
-// function initSwiper() {
-//   var swiper = new Swiper('.swiper-container', {
-//     // Optional parameters
-//     observer: true, // https://stackoverflow.com/questions/43770106/swiper-slider-not-working-unless-page-is-resized
-//     observeParents: true,
-//     centeredSlides: true,
-//     effect: 'coverflow',
-//     loop: true,
-//     grabCursor: true,
-//     slidesPerView: 2,
-//     spaceBetween: -50,
-//     speed: 1000,
-//     autoplay: {
-//       delay: 3000,
-//       disableOnInteraction: false
-//     },
-//     coverflowEffect: {
-//       rotate: 20,
-//       stretch: 0,
-//       depth: 400,
-//       modifier: 2,
-//       slideShadows : true
-//     },
-//     // If we need pagination
-//     pagination: {
-//       el: '.swiper-pagination',
-//       clickable: true
-//     },
-//   });
-// };
+function toggleModal(sectionId) {
+  const modal = document.getElementById(sectionId);
+  if (!modal) {
+    console.error(`Modal dengan ID ${sectionId} tidak ditemukan.`);
+    return;
+  }
 
-// initSwiper();
+  modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+    
+  if (!nav) {
+    console.error(`Elemen navigasi dengan ID 'nav' tidak ditemukan.`);
+    return;
+  }
+  
+  nav.style.display = modal.style.display === 'block' ? 'none' : 'flex';
+  navlinks.forEach(navlink => {
+    navlink.style.opacity = modal.style.display === 'block' ? 0 : 1;
+  });
+
+  const closeButton = modal.querySelector('.close');
+  if (closeButton) {
+    closeButton.addEventListener('click', function() {
+      toggleModal(sectionId);
+    });
+  } else {
+    console.error(`Tombol close tidak ditemukan di dalam modal dengan ID ${sectionId}.`);
+  }
+}
+
+
+
+const triggers = [
+  '.ammaia',
+  '.ammaia2',
+  '.ammaia3',
+  '.arumaya1',
+  '.arumaya2',
+  '.arumaya3',
+  '.arumaya4',
+  '.kelimutu7',
+  '.kelimutu9',
+  '.asya-maninjau',
+  '.ananda-penthouse',
+  '.sentarum6',
+  '.sentarum8',
+  '.tobalake'
+];
+
+const modalIds = [
+  'lavatera-type-6',
+  'lavatera-type-7',
+  'lavatera-type-8',
+  'arumaya-1',
+  'arumaya-2',
+  'arumaya-3',
+  'arumaya-4',
+  'kalimutu-type-7',
+  'kalimutu-type-9',
+  'maninjau',
+  'anandamaya-penthouse',
+  'sentarum-type-6',
+  'sentarum-type-8',
+  'toba-lake'
+];
+
+triggers.forEach((trigger, index) => {
+  const triggerElement = document.querySelector(trigger);
+  if (triggerElement) {
+    triggerElement.addEventListener('click', function(event) {
+      event.preventDefault();
+      toggleModal(modalIds[index]);
+    });
+  } else {
+    console.error(`Elemen trigger dengan selector ${trigger} tidak ditemukan.`);
+  }
+});
+
 
 function initSwipers() {
   // Select all elements with class 'swiper-container'
@@ -997,7 +632,7 @@ function initSwipers() {
 
   // Loop through each swiper container element
   swiperContainers.forEach(container => {
-    var swiper = new Swiper(container, {
+    const swiper = new Swiper(container, {
       // Optional parameters
       observer: true,
       observeParents: true,
@@ -1044,39 +679,21 @@ function initSwipers() {
   });
 }
 
-initSwipers();
-
-
-const maps = document.querySelectorAll('.openmap');
-const lightbox = document.querySelectorAll('.lightbox');
-
-maps.forEach((map) => {
-  map.addEventListener('click', function() {
-    console.log('buka');
-    lightbox.forEach((light) => {
-      gsap.to(light, { opacity: 1, display: 'flex' });
-    })
-  });
-});
-
-const mapClose = document.querySelectorAll('.tutup');
-mapClose.forEach((item) => {
-  item.addEventListener('click', function() {
-    lightbox.forEach((light) => {
-      gsap.to(light, { opacity: 0, display: 'none' });
-    })
-  });
-});
-
 
 
 // Language Redirect
 
-document.getElementById('ind').addEventListener('click', function() {
-  window.location.href = "index.html"; // Mengarahkan pengguna ke URL "/"
-});
-
 document.getElementById('en').addEventListener('click', function() {
-  window.location.href = "english.html"; // Mengarahkan pengguna ke URL "/"
+  window.location.href = "index.html"; 
 });
 
+document.getElementById('ind').addEventListener('click', function() {
+  window.location.href = "lang-in.html";
+});
+
+
+
+// INIT
+buttonOnStated()
+initSwipers();
+updateContentAndBehavior();
