@@ -11,7 +11,6 @@ function createWindow () {
   const win = new BrowserWindow({
     width: isDev ? 1280 : 800,
     height: isDev ? 720 : 600,
-    frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nativeWindowOpen: false,

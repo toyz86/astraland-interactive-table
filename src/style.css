@@ -1507,39 +1507,6 @@ ol, ul {
   position: absolute;
 }
 
-.top-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.5vw;
-  background: #000f20;
-}
-.top-menu .left-menu {
-  width: 1.5vw;
-  height: 1.5vw;
-}
-.top-menu .left-menu img {
-  width: 100%;
-  height: 100%;
-}
-.top-menu .right-menu {
-  display: flex;
-}
-.top-menu .right-menu .right-button-items {
-  width: 2vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2vh;
-  background: red;
-}
-.top-menu .right-menu .right-button-items .minimize {
-  width: 1vw;
-  background: #fff;
-  height: 1.5em;
-}
-
 @font-face {
   font-family: "Open Sans Regular";
   font-style: normal;
