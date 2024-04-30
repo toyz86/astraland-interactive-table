@@ -9,9 +9,61 @@
     <link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" href="./src/css/swiper-bundle.min..css"/>
     <link rel="stylesheet" href="./src/css/photoswipe.css">
+    <script src="./src/js/appFunction.js" defer></script>
 
 </head>
 <body>
+
+  <div class="navbar-header">
+    <div class="top-header"></div>
+  
+    <!-- BEGIN TITLE BAR -->
+    <div class="wc-box">
+      <div class="minimize"></div>
+      <div class="maximize"></div>
+      <div class="exit"></div>
+    </div>
+    <!-- END TITLE BAR -->
+  </div>
+
+  <div class="menu-wrapper">
+    <div class="toggle-menu">
+      <div class="menu-dot"></div>
+      <div class="menu-dot"></div>
+      <div class="menu-dot"></div>
+    </div>
+
+    <div class="menu-block">
+      <div id="fullScreen" class="d-flex-space-between menu-link">
+        <p>Toggle Full Screen</p>
+        <span>F11</span>
+      </div>
+      <div id="zoomIn" class="d-flex-space-between menu-link">
+        <p>Zoom in</p>
+        <span>Ctrl++</span>
+      </div>
+      <div id="zoomOut" class="d-flex-space-between menu-link">
+        <p>Zoom Out</p>
+        <span>Ctrl+-</span>
+      </div>
+      <div id="actualSize" class="d-flex-space-between menu-link">
+        <p>Actual Size</p>
+        <span>Ctrl+0</span>
+      </div>
+      <div class="break-line"></div>
+      <div id="reload" class="d-flex-space-between menu-link">
+        <p>Reload</p>
+        <span>Ctrl+R</span>
+      </div>
+      <div class="break-line"></div>
+      <div id="closeWindow" class="d-flex-space-between menu-link">
+        <p>Exit</p>
+        <span>Ctrl+Q</span>
+      </div>
+    </div>
+  </div>
+
+
   <section id="mainpage" class="slides container">
     <div class="start-btn">
       <div class="logo-mask">

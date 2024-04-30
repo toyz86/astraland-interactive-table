@@ -679,6 +679,27 @@ function initSwipers() {
   });
 }
 
+var menuBody = TweenLite.to(".menu-block", 0.3, {
+  y: 0,
+  rotate: 0,
+  opacity: 1,
+  display: 'block',
+  paused: true,
+  reversed: true
+});
+
+const burger = TweenLite.to(".toggle-menu", 0.3, {
+  rotate: 90,
+  paused: true,
+  reversed: true
+})
+
+document.querySelector(".toggle-menu").addEventListener("click", doCoolStuff);
+
+function doCoolStuff() {
+  menuBody.reversed() ? menuBody.play() : menuBody.reverse();
+  burger.reversed() ? burger.play() : burger.reverse();
+}
 
 
 // Language Redirect
@@ -690,6 +711,38 @@ document.getElementById('en').addEventListener('click', function() {
 document.getElementById('ind').addEventListener('click', function() {
   window.location.href = "lang-in.html";
 });
+
+// Toggle Fullscreen
+
+var fullscreenButton = document.getElementById("fullScreen");
+fullscreenButton.addEventListener("click", toggleFullScreen, false);
+
+function toggleFullScreen() {
+  // fullscreenButton.innerHTML = "Exit Fullscreen";
+  if (!document.fullscreenElement &&    // alternative standard method
+      !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) {
+      document.documentElement.msRequestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) {
+      document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+    }
+  } else {
+    // fullscreenButton.innerHTML = "Fullscreen"
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+}
 
 
 

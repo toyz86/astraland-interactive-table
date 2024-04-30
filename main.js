@@ -1,7 +1,8 @@
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
 
-const { app, BrowserWindow, Menu} = require('electron/main')
+const { app, BrowserWindow, ipcMain} = require('electron/main')
 const path = require('node:path');
+const ipc = ipcMain;
 
 process.env.NODE_ENV = 'production';
 
@@ -11,9 +12,12 @@ function createWindow () {
   const win = new BrowserWindow({
     width: isDev ? 1280 : 800,
     height: isDev ? 720 : 600,
+    frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
       nativeWindowOpen: false,
+      contextIsolation: false
     },
     title: 'Astraland App'
   })
@@ -25,24 +29,31 @@ function createWindow () {
   }
 
   win.loadFile('index.html')
+  
+  ipc.on('closeApp', () => {
+    console.log('Received closeApp message')
+    win.close()
+  })
 
-  const menu = Menu.buildFromTemplate([
-    {
-      label: 'View',
-      submenu: [
-        { role: 'togglefullscreen' },
-        { type: 'separator' },
-        { role: 'zoomin' },
-        { role: 'zoomout' },
-        { role: 'resetzoom' },
-        { type: 'separator' },
-        { role: 'reload', accelerator: 'CmdOrCtrl+R' },
-        { type: 'separator' },
-        { role: 'quit', accelerator: 'CmdOrCtrl+Q' }
-      ]
-    }
-  ])
-  Menu.setApplicationMenu(menu);
+
+  // const menu = Menu.buildFromTemplate([
+  //   {
+  //     label: 'View',
+  //     submenu: [
+  //       { role: 'togglefullscreen' },
+  //       { type: 'separator' },
+  //       { role: 'zoomin' },
+  //       { role: 'zoomout' },
+  //       { role: 'resetzoom' },
+  //       { type: 'separator' },
+  //       { role: 'reload', accelerator: 'CmdOrCtrl+R' },
+  //       { type: 'separator' },
+  //       { role: 'quit', accelerator: 'CmdOrCtrl+Q' }
+  //     ]
+  //   }
+  // ])
+  // Menu.setApplicationMenu(menu);
+
 }
 
 app.whenReady().then(() => {
