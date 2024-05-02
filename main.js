@@ -12,7 +12,7 @@ function createWindow () {
   const win = new BrowserWindow({
     width: isDev ? 1280 : 800,
     height: isDev ? 720 : 600,
-    frame: false,
+    // frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -22,7 +22,7 @@ function createWindow () {
     title: 'Astraland App'
   })
 
-  // win.setMenuBarVisibility(false)
+  win.setMenuBarVisibility(false) // Hide menus bar
 
   if (isDev) {
     win.webContents.openDevTools();
@@ -33,6 +33,25 @@ function createWindow () {
   ipc.on('closeApp', () => {
     console.log('Received closeApp message')
     win.close()
+  })
+
+  ipc.on('reloadApp', () => {
+    win.reload()
+  })
+
+  ipc.on('isZoomIn', () => {
+    console.log('isZoomIn')
+    win.webContents.zoomFactor += 0.1;
+  })
+
+  ipc.on('isZoomOut', () => {
+    console.log('isZoomOut')
+    win.webContents.zoomFactor -= 0.1; 
+  })
+
+  ipc.on('isActualSize', () => {
+    console.log('isActualSize')
+    win.webContents.zoomFactor = 1;
   })
 
 

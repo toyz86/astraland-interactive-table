@@ -1596,22 +1596,22 @@ ol, ul {
 	}
 }
 
-.navbar-header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	display: flex;
-	z-index: 999999;
-}
+// .navbar-header {
+// 	position: fixed;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	display: flex;
+// 	z-index: 999999;
+// }
 
-.top-header {
-	width: 90%;
-	height: 50px;
-	top: 0;
-	left: 0;
-	-webkit-app-region: drag;
-}
+// .top-header {
+// 	width: 90%;
+// 	height: 50px;
+// 	top: 0;
+// 	left: 0;
+// 	-webkit-app-region: drag; // dragable window
+// }
 
 .menu-wrapper {
 	position: absolute;

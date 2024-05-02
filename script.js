@@ -338,6 +338,7 @@ function showSection(index) {
   hideMilestoneNav();
 
   console.log("Current section ID:", sections[index].id);
+  console.log('currentt index:', currentIndex)
   const numSlideItems = slideItems.length;
   // console.log("Jumlah slides-items pada currentIndex:", numSlideItems);
 
@@ -679,7 +680,7 @@ function initSwipers() {
   });
 }
 
-var menuBody = TweenLite.to(".menu-block", 0.3, {
+const menuBody = TweenLite.to(".menu-block", 0.3, {
   y: 0,
   rotate: 0,
   opacity: 1,
@@ -694,12 +695,25 @@ const burger = TweenLite.to(".toggle-menu", 0.3, {
   reversed: true
 })
 
-document.querySelector(".toggle-menu").addEventListener("click", doCoolStuff);
+document.querySelector(".toggle-menu").addEventListener("click", isNavMenu);
 
-function doCoolStuff() {
+function isNavMenu() {
   menuBody.reversed() ? menuBody.play() : menuBody.reverse();
   burger.reversed() ? burger.play() : burger.reverse();
 }
+
+document.body.addEventListener("click", function(event) {
+  // Check if the click target is not inside the menu block or the toggle menu button
+  if (!event.target.closest(".menu-block") && !event.target.classList.contains("toggle-menu")) {
+    // Reverse the menu and burger animations if they're not already reversed
+    if (!menuBody.reversed()) {
+      menuBody.reverse();
+    }
+    if (!burger.reversed()) {
+      burger.reverse();
+    }
+  }
+});
 
 
 // Language Redirect
