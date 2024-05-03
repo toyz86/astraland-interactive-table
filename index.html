@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Astraland Interactive Table</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" /> -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:;"> -->
-    <link rel="stylesheet" href="src/style.css">
-    <link rel="stylesheet" href="./src/css/swiper-bundle.min..css"/>
-    <link rel="stylesheet" href="./src/css/photoswipe.css">
-    <script src="./src/js/appFunction.js" defer></script>
+  <meta charset="UTF-8">
+  <title>Astraland Interactive Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" /> -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:;"> -->
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="./src/css/swiper-bundle.min..css"/>
+  <link rel="stylesheet" href="./src/css/fancybox.css" />
 
 </head>
+
 <body>
 
   <!-- <div class="navbar-header">
@@ -586,45 +586,24 @@
                 <li>1,5 km to Bundaran HI</li>
               </div>
 
-              <div class="pswp-gallery pswp-gallery--single-column" id="gallery--individual">
-                <a class="openmap greenery" href="./src/assets/maps/map-4.png" 
-                  data-pswp-width="1680" 
-                  data-pswp-height="2032" 
-                  target="_blank">
-                  Open Full Map
-                  <span>
-                    <svg version="1.1" id="paging" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
-                    <path fill="#07241a" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
-                      c25.62-25.63,51.25-51.25,76.89-76.87c0.52-0.52,1.16-0.93,2.25-1.79c-1.05-0.73-1.74-1.08-2.27-1.6
-                      c-25.73-25.7-51.45-51.41-77.16-77.12c-3.9-3.9-4.78-8.24-2.52-12.41c2.83-5.22,9.71-6.68,14.4-3.04c0.74,0.57,1.42,1.24,2.08,1.9
-                      c28.16,28.14,56.32,56.29,84.48,84.44c5.22,5.21,5.21,10.67-0.01,15.89c-27.67,27.66-55.35,55.31-83,82.99
-                      c-2.22,2.23-4.45,4.37-7.52,5.36C56.68,196.01,55.42,196.01,54.17,196.01z"/>
-                    </svg>
-                  </span>
-                </a>
-              </div>
-
-
-              <!-- <button id="openmap" class="openmap">Open Full Map
+              <a
+                class="openmap greenery"
+                data-fancybox
+                data-src="./src/assets/maps/map-4.png"
+              >
+                Open Full Map
                 <span>
                   <svg version="1.1" id="paging" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
-                  <path fill="#b28658" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
+                  <path fill="#07241a" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
                     c25.62-25.63,51.25-51.25,76.89-76.87c0.52-0.52,1.16-0.93,2.25-1.79c-1.05-0.73-1.74-1.08-2.27-1.6
                     c-25.73-25.7-51.45-51.41-77.16-77.12c-3.9-3.9-4.78-8.24-2.52-12.41c2.83-5.22,9.71-6.68,14.4-3.04c0.74,0.57,1.42,1.24,2.08,1.9
                     c28.16,28.14,56.32,56.29,84.48,84.44c5.22,5.21,5.21,10.67-0.01,15.89c-27.67,27.66-55.35,55.31-83,82.99
                     c-2.22,2.23-4.45,4.37-7.52,5.36C56.68,196.01,55.42,196.01,54.17,196.01z"/>
                   </svg>
                 </span>
-              </button>
+              </a>
 
-              <div id="lightbox" class="lightbox">
-                <div class="image-wrapper">
-                  <span class="tutup" id="close">&times;</span>
-                  <img src="./src/assets/maps/map-4.png" alt="Full Map" class="lightbox-content" id="lightbox-img">
-                </div>
-              </div> -->
            </div>
 
           </div>
@@ -733,10 +712,33 @@
                 <div class="collapsible-body">
                   <div class="content-collapse">
                     <ol>
-                      <li>Type 200</li>
-                      <li>Type 300</li>
+                      <li class="d-flex-space-between">
+                        Type 200
+                        <button data-fancybox href="./src/assets/asya/floor-plan/Toba---Tipe-200.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
+
+                      <li class="d-flex-space-between">
+                        Type 300
+                        <button data-fancybox href="./src/assets/asya/floor-plan/Toba---Tipe-300.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
                       <li class="d-flex-space-between">
                         Type 500
+                        <button data-fancybox="toba-500" href="./src/assets/asya/floor-plan/Toba---Tipe-500A.jpg">
+                          See Floor Plan
+                        </button>
+          
+                        <div style="display:none">
+                          <a data-fancybox="toba-500" href="./src/assets/asya/floor-plan/Toba---Tipe-500B.jpg">
+                            <img src="./src/assets/asya/floor-plan/Toba---Tipe-500B.jpg" />
+                          </a>
+                          <a data-fancybox="toba-500" href="./src/assets/asya/floor-plan/Toba---Tipe-500C.jpg">
+                            <img src="./src/assets/asya/floor-plan/Toba---Tipe-500C.jpg" />
+                          </a>                          
+                        </div>
                         <button class="tobalake">See Virtual Tour</button>
                       </li>
                     </ol>
@@ -753,14 +755,51 @@
                 <div class="collapsible-body">
                   <div class="content-collapse">
                     <ol>
-                      <li>Type 8</li>
-                      <li>Type 10</li>
-                      <li>
+                      <li class="d-flex-space-between">
+                        Type 8
+                        <button data-fancybox="maninjau-type-8" href="./src/assets/asya/floor-plan/Maninjau---Tipe-8,-2-Storey.jpg">
+                          See Floor Plan
+                        </button>
+          
+                        <div style="display:none">
+                          <a data-fancybox="maninjau-type-8" href="./src/assets/asya/floor-plan/Maninjau---Tipe-8,-3-Storey.jpg">
+                            <img src="./src/assets/asya/floor-plan/Maninjau---Tipe-8,-3-Storey.jpg" />
+                          </a>
+                        </div>
+                      </li>
+                      <li class="d-flex-space-between">
+                        Type 10
+                        <button data-fancybox="maninjau-type-10" href="./src/assets/asya/floor-plan/Maninjau---Tipe-10,-2-Storey.jpg">
+                          See Floor Plan
+                        </button>
+          
+                        <div style="display:none">
+                          <a data-fancybox="maninjau-type-10" href="./src/assets/asya/floor-plan/Maninjau---Tipe-10,-3-Storey.jpg">
+                            <img src="./src/assets/asya/floor-plan/Maninjau---Tipe-10,-3-Storey.jpg" />
+                          </a>
+                          <a data-fancybox="maninjau-type-10" href="./src/assets/asya/floor-plan/Maninjau---Tipe-10x17,-3-Storey.jpg">
+                            <img src="./src/assets/asya/floor-plan/Maninjau---Tipe-10x17,-3-Storey.jpg" />
+                          </a>                          
+                        </div>
+                      </li>
+                      <li class="list-sold-w-btn">
                         Type 12
                         <img src="./src/assets/sold.svg" alt="">
+                        <button data-fancybox href="./src/assets/asya/floor-plan/Maninjau---Tipe-12,-2-Storey.jpg">
+                          See Floor Plan
+                        </button>                        
                       </li>
                       <li class="d-flex-space-between">
                         Type 14
+                        <button data-fancybox="maninjau-type-14" href="./src/assets/asya/floor-plan/Maninjau---Tipe-14,-3-Storey.jpg">
+                          See Floor Plan
+                        </button>
+          
+                        <div style="display:none">
+                          <a data-fancybox="maninjau-type-14" href="./src/assets/asya/floor-plan/Maninjau---Tipe-14x17,-3-Storey.jpg">
+                            <img src="./src/assets/asya/floor-plan/Maninjau---Tipe-14x17,-3-Storey.jpg" />
+                          </a>
+                        </div>
                         <button class="asya-maninjau">See Virtual Tour</button>
                       </li>
                     </ol>
@@ -778,14 +817,42 @@
                     <ol>
                       <li class="d-flex-space-between">
                         Type 6
+                        <button data-fancybox="sentarum-tipe-6" href="./src/assets/asya/floor-plan/Sentarum---Tipe-6x14,-2-Storey.jpg">
+                          See Floor Plan
+                        </button>
+          
+                        <div style="display:none">
+                          <a data-fancybox="sentarum-tipe-6" href="./src/assets/asya/floor-plan/Sentarum---Tipe-6x14,-3-Storey.jpg">
+                            <img src="./src/assets/asya/floor-plan/Sentarum---Tipe-6x14,-3-Storey.jpg" />
+                          </a>
+                        </div>
                         <button class="sentarum6">See Virtual Tour</button>
                       </li>
-                      <li>Type 7</li>
+                      <li class="d-flex-space-between">
+                        Type 7
+                        <button data-fancybox href="./src/assets/asya/floor-plan/Sentarum---Tipe-7x14,-3-Storey.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
                       <li class="d-flex-space-between">
                         Type 8
+                        <button data-fancybox href="./src/assets/asya/floor-plan/Sentarum---Tipe-8x14,-3-Storey.jpg">
+                          See Floor Plan
+                        </button>
                         <button class="sentarum8">See Virtual Tour</button>
                       </li>
-                      <li>Type 9</li>
+                      <li class="d-flex-space-between">
+                        Type 9
+                        <button data-fancybox="sentarum-tipe-9" href="./src/assets/asya/floor-plan/Sentarum---Tipe-9x14,-3-Storey.jpg">
+                          See Floor Plan
+                        </button>
+          
+                        <div style="display:none">
+                          <a data-fancybox="sentarum-tipe-9" href="./src/assets/asya/floor-plan/Sentarum---Tipe-9x17,-3-Storey.jpg">
+                            <img src="./src/assets/asya/floor-plan/Sentarum---Tipe-9x17,-3-Storey.jpg" />
+                          </a>
+                        </div>                      
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -799,13 +866,24 @@
                 <div class="collapsible-body">
                   <div class="content-collapse">
                     <ol>
-                      <li>Type 6</li>
+                      <li class="d-flex-space-between">
+                        Type 6
+                        <button data-fancybox href="./src/assets/asya/floor-plan/Kelimutu---Tipe-6,-3-storey.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
                       <li class="d-flex-space-between">
                         Type 7
+                        <button data-fancybox href="./src/assets/asya/floor-plan/Kelimutu---Tipe-7,-3-storey.jpg">
+                          See Floor Plan
+                        </button>                        
                         <button class="kelimutu7">See Virtual Tour</button>
                       </li>
                       <li class="d-flex-space-between">
                         Type 9
+                        <button data-fancybox href="./src/assets/asya/floor-plan/Kelimutu---Tipe-9,-3-storey.jpg">
+                          See Floor Plan
+                        </button>                        
                         <button class="kelimutu9">See Virtual Tour</button>
                       </li>
                     </ol>
@@ -847,45 +925,23 @@
                 <p>45 mins to Soekarno-Hatta Airport</p>
               </div>
 
-              <div class="pswp-gallery pswp-gallery--single-column" id="gallery--individual">
-                <a class="openmap greenery" href="./src/assets/maps/map-5a.png" 
-                  data-pswp-width="3508" 
-                  data-pswp-height="2481" 
-                  target="_blank">
-                  Open Full Map
-                  <span>
-                    <svg version="1.1" id="paging" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
-                    <path fill="#07241a" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
-                      c25.62-25.63,51.25-51.25,76.89-76.87c0.52-0.52,1.16-0.93,2.25-1.79c-1.05-0.73-1.74-1.08-2.27-1.6
-                      c-25.73-25.7-51.45-51.41-77.16-77.12c-3.9-3.9-4.78-8.24-2.52-12.41c2.83-5.22,9.71-6.68,14.4-3.04c0.74,0.57,1.42,1.24,2.08,1.9
-                      c28.16,28.14,56.32,56.29,84.48,84.44c5.22,5.21,5.21,10.67-0.01,15.89c-27.67,27.66-55.35,55.31-83,82.99
-                      c-2.22,2.23-4.45,4.37-7.52,5.36C56.68,196.01,55.42,196.01,54.17,196.01z"/>
-                    </svg>
-                  </span>
-                </a>
-              </div>
-
-
-              <!-- <button id="openmap" class="openmap">Open Full Map
+              <a
+                class="openmap greenery"
+                data-fancybox
+                data-src="./src/assets/maps/map-5a.png"
+              >
+                Open Full Map
                 <span>
                   <svg version="1.1" id="paging" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
-                  <path fill="#b28658" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
+                  <path fill="#07241a" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
                     c25.62-25.63,51.25-51.25,76.89-76.87c0.52-0.52,1.16-0.93,2.25-1.79c-1.05-0.73-1.74-1.08-2.27-1.6
                     c-25.73-25.7-51.45-51.41-77.16-77.12c-3.9-3.9-4.78-8.24-2.52-12.41c2.83-5.22,9.71-6.68,14.4-3.04c0.74,0.57,1.42,1.24,2.08,1.9
                     c28.16,28.14,56.32,56.29,84.48,84.44c5.22,5.21,5.21,10.67-0.01,15.89c-27.67,27.66-55.35,55.31-83,82.99
                     c-2.22,2.23-4.45,4.37-7.52,5.36C56.68,196.01,55.42,196.01,54.17,196.01z"/>
                   </svg>
                 </span>
-              </button>
-
-              <div id="lightbox" class="lightbox">
-                <div class="image-wrapper">
-                  <span class="tutup" id="close">&times;</span>
-                  <img src="./src/assets/maps/map-5.png" alt="Full Map" class="lightbox-content" id="lightbox-img">
-                </div>
-              </div> -->
+              </a>
            </div>
 
           </div>
@@ -940,28 +996,90 @@
 
             <div class="content" id="cluster-content">
 
-              <a class="cluster-items">
+              <div class="cluster-items d-flex-space-between">
                 <h2>Monument Room</h2>
-              </a>
+                <button data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-0.avif" data-caption="Monument Room 1">
+                  See Floor Plan
+                </button>
+  
+                <div style="display:none">
+                  <a data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-1.avif" data-caption="Monument Room 2">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Monument View-1.avif" />
+                  </a>
+                  <a data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-2.webp" data-caption="Monument Room 3">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Monument View-2.webp" />
+                  </a>
+                </div>
+              </div>
 
-              <a class="cluster-items">
+              <div class="cluster-items d-flex-space-between">
                 <h2>Deluxe Room</h2>
-              </a>
+                <button data-fancybox="mandarin-deluxe" href="./src/assets/Mandarin Oriental/floor-plan/Deluxe-1.avif" data-caption="Deluxe Room 1">
+                  See Floor Plan
+                </button>
+  
+                <div style="display:none">
+                  <a data-fancybox="mandarin-deluxe" href="./src/assets/Mandarin Oriental/floor-plan/Deluxe-2.webp" data-caption="Deluxe Room 2">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Deluxe-2.webp" />
+                  </a>
+                  <a data-fancybox="mandarin-deluxe" href="./src/assets/Mandarin Oriental/floor-plan/Deluxe-3.avif" data-caption="Deluxe Room 3">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Deluxe-3.avif" />
+                  </a>
+                </div>
+              </div>
 
-              <a class="cluster-items">
+              <div class="cluster-items d-flex-space-between">
                 <h2>Urban Suite</h2>
-              </a>
+                <button data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-1.avif" data-caption="Urban Suite 1">
+                  See Floor Plan
+                </button>
+  
+                <div style="display:none">
+                  <a data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-2.avif" data-caption="Urban Suite 2">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Urban-2.avif" />
+                  </a>
+                  <a data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-3.avif" data-caption="Urban Suite 3">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Urban-3.avif" />
+                  </a>
+                  <a data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-4.avif" data-caption="Urban Suite 4">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Urban-4.avif" />
+                  </a>
+                </div>
+              </div>
 
-              <a class="cluster-items">
+              <div class="cluster-items d-flex-space-between">
                 <h2>Oriental Suite</h2>
-              </a>
+                <button data-fancybox="oriental-suite" href="./src/assets/Mandarin Oriental/floor-plan/Oriental-1.avif" data-caption="Oriental Suite 1">
+                  See Floor Plan
+                </button>
+  
+                <div style="display:none">
+                  <a data-fancybox="oriental-suite" href="./src/assets/Mandarin Oriental/floor-plan/Oriental-2.avif" data-caption="Oriental Suite 2">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Oriental-2.avif" />
+                  </a>
+                  <a data-fancybox="oriental-suite" href="./src/assets/Mandarin Oriental/floor-plan/Oriental-3.avif" data-caption="Oriental Suite 3">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Oriental-3.avif" />
+                  </a>
+                </div>
+              </div>
 
-              <a class="cluster-items">
+              <div class="cluster-items d-flex-space-between">
                 <h2>Mandarin Suite</h2>
-              </a>
-
-
-            </div>
+                <button data-fancybox="mandarin-suite" href="./src/assets/Mandarin Oriental/floor-plan/Mandarin-1.avif" data-caption="Mandarin Suite 1">
+                  See Floor Plan
+                </button>
+  
+                <div style="display:none">
+                  <a data-fancybox="mandarin-suite" href="./src/assets/Mandarin Oriental/floor-plan/Mandarin-2.avif" data-caption="Mandarin Suite 2">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Mandarin-2.avif" />
+                  </a>
+                  <a data-fancybox="mandarin-suite" href="./src/assets/Mandarin Oriental/floor-plan/Mandarin-3.avif" data-caption="Mandarin Suite 3">
+                    <img src="./src/assets/Mandarin Oriental/floor-plan/Mandarin-3.avif" />
+                  </a>
+                </div>
+              </div>
+              
+            </div> 
 
             <div class="content" id="facilities-content">
               <div class="swiper-container">
@@ -1068,12 +1186,25 @@
                 <div class="collapsible-body">
                   <div class="content-collapse">
                     <ol>
-                      <li>
+                      <li class="list-sold-w-btn">
                         Studio
                         <img src="./src/assets/sold.svg" alt="">
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Low-Rise---Studio.jpg">
+                          See Floor Plan
+                        </button>
                       </li>
-                      <li>1 Bedroom</li>
-                      <li>1 Bedroom + Study Room</li>
+                      <li class="d-flex-space-between">
+                        1 Bedroom
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Low-Rise,-Mid-Rise---1-BR.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
+                      <li class="d-flex-space-between">
+                        1 Bedroom + Study Room
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Low-Rise---1-BR-+-Study.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -1094,9 +1225,23 @@
                       </li>
                       <li class="d-flex-space-between">
                         2 Bedroom
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Mid-Rise---2-BR.jpg">
+                          See Floor Plan
+                        </button>
                         <button class="arumaya2">See Virtual Tour</button>
                       </li>
-                      <li>3 Bedroom</li>
+                      <li class="d-flex-space-between">
+                        2 Bedroom + Study Room
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Mid-Rise---3-BR-+-Study.jpg">
+                          See Floor Plan
+                        </button>                        
+                      </li>
+                      <li class="d-flex-space-between">
+                        3 Bedroom
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Mid-Rise---3-BR.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -1110,14 +1255,30 @@
                 <div class="collapsible-body">
                   <div class="content-collapse">
                     <ol>
-                      <li>Studio</li>
-                      <li>1 Bedroom</li>
+                      <li class="d-flex-space-between">
+                        Studio
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Garden-Villa---Studio.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
+                      <li class="d-flex-space-between">
+                        1 Bedroom
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Garden-Villa---1-BR.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
                       <li class="d-flex-space-between">
                         2 Bedroom
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Garden-Villa---2-BR.jpg">
+                          See Floor Plan
+                        </button>                        
                         <button class="arumaya3">See Virtual Tour</button>
                       </li>
                       <li class="d-flex-space-between">
                         3 Bedroom
+                        <button data-fancybox href="./src/assets/Arumaya/floor-plan/Garden-Villa---3-BR.jpg">
+                          See Floor Plan
+                        </button>                        
                         <button class="arumaya4">See Virtual Tour</button>
                       </li>
                     </ol>
@@ -1162,45 +1323,23 @@
                 <li>2 km to Cipete Toll Exit</li>
               </div>
 
-              <div class="pswp-gallery pswp-gallery--single-column" id="gallery--individual">
-                <a class="openmap greenery" href="./src/assets/maps/map-7.png" 
-                  data-pswp-width="3543" 
-                  data-pswp-height="2215" 
-                  target="_blank">
-                  Open Full Map
-                  <span>
-                    <svg version="1.1" id="paging" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
-                    <path fill="#07241a" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
-                      c25.62-25.63,51.25-51.25,76.89-76.87c0.52-0.52,1.16-0.93,2.25-1.79c-1.05-0.73-1.74-1.08-2.27-1.6
-                      c-25.73-25.7-51.45-51.41-77.16-77.12c-3.9-3.9-4.78-8.24-2.52-12.41c2.83-5.22,9.71-6.68,14.4-3.04c0.74,0.57,1.42,1.24,2.08,1.9
-                      c28.16,28.14,56.32,56.29,84.48,84.44c5.22,5.21,5.21,10.67-0.01,15.89c-27.67,27.66-55.35,55.31-83,82.99
-                      c-2.22,2.23-4.45,4.37-7.52,5.36C56.68,196.01,55.42,196.01,54.17,196.01z"/>
-                    </svg>
-                  </span>
-                </a>
-              </div>
-
-              <!-- <button id="openmap" class="openmap">Open Full Map
+              <a
+                class="openmap greenery"
+                data-fancybox
+                data-src="./src/assets/maps/map-7.png"
+              >
+                Open Full Map
                 <span>
                   <svg version="1.1" id="paging" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
-                  <path fill="#b28658" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
+                  <path fill="#07241a" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
                     c25.62-25.63,51.25-51.25,76.89-76.87c0.52-0.52,1.16-0.93,2.25-1.79c-1.05-0.73-1.74-1.08-2.27-1.6
                     c-25.73-25.7-51.45-51.41-77.16-77.12c-3.9-3.9-4.78-8.24-2.52-12.41c2.83-5.22,9.71-6.68,14.4-3.04c0.74,0.57,1.42,1.24,2.08,1.9
                     c28.16,28.14,56.32,56.29,84.48,84.44c5.22,5.21,5.21,10.67-0.01,15.89c-27.67,27.66-55.35,55.31-83,82.99
                     c-2.22,2.23-4.45,4.37-7.52,5.36C56.68,196.01,55.42,196.01,54.17,196.01z"/>
                   </svg>
                 </span>
-              </button>
-
-              <div id="lightbox" class="lightbox">
-                <div class="image-wrapper">
-                  <span class="tutup" id="close">&times;</span>
-                  <img src="./src/assets/maps/map-7.png" alt="Full Map" class="lightbox-content" id="lightbox-img">
-                </div>
-              </div> -->
-              
+              </a>
            </div>
 
           </div>
@@ -1245,8 +1384,6 @@
               <p>Welcome to Ammaia Ecoforest, a revolutionary residential development that sets a new benchmark for sustainable living. Created by Astra Land Indonesia, Ammaia Ecoforest is a visionary project that harmonizes the well-being of its residents with the restoration and preservation of the natural ecosystem. Spanning across lush green spaces and embracing holistic practices, this exceptional development redefines the concept of sustainable living in Indonesia
                 <br><br>
                 With a deep commitment to the environment and a focus on enhancing the quality of life, Ammaia Ecoforest invites you to embark on a journey where nature, community, and sustainable practices intertwine to create a truly remarkable living experience.
-                
-                
               </p>
             </div>
 
@@ -1261,15 +1398,28 @@
                     <ol>
                       <li class="d-flex-space-between">
                         Type 6
-                        <!-- <button class="floorplan">See Floor Plan</button> -->
                         <button class="ammaia">See Virtual Tour</button>
                       </li>
                       <li class="d-flex-space-between">
                         Type 7
+                        <button
+                          class="openmap greenery"
+                          data-fancybox
+                          data-src="./src/assets/ammaia/floor-plan/Ammaia---Tipe-7.jpg"
+                        >
+                          See Floor Plan
+                        </button>
                         <button class="ammaia2">See Virtual Tour</button>
                       </li>
                       <li class="d-flex-space-between">
                         Type 8
+                        <button
+                          class="openmap greenery"
+                          data-fancybox
+                          data-src="./src/assets/ammaia/floor-plan/Ammaia---Tipe-8.jpg"
+                        >
+                          See Floor Plan
+                        </button>
                         <button class="ammaia3">See Virtual Tour</button>
                       </li>
                     </ol>
@@ -1310,27 +1460,12 @@
                 <li>Easy access to the planned Jakarta Outer Ring Road (JORR) 3 Toll Exit</li>
               </div>
 
-              <div class="pswp-gallery pswp-gallery--single-column" id="gallery--individual">
-                <a class="openmap greenery" href="./src/assets/maps/map-8.png" 
-                  data-pswp-width="3508" 
-                  data-pswp-height="2481" 
-                  target="_blank">
-                  Open Full Map
-                  <span>
-                    <svg version="1.1" id="paging" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
-                    <path fill="#07241a" d="M54.17,196.01c-1.87-1.19-4.06-2.07-5.54-3.62c-3.12-3.28-3.09-8.34-0.33-11.92c0.61-0.79,1.32-1.51,2.02-2.22
-                      c25.62-25.63,51.25-51.25,76.89-76.87c0.52-0.52,1.16-0.93,2.25-1.79c-1.05-0.73-1.74-1.08-2.27-1.6
-                      c-25.73-25.7-51.45-51.41-77.16-77.12c-3.9-3.9-4.78-8.24-2.52-12.41c2.83-5.22,9.71-6.68,14.4-3.04c0.74,0.57,1.42,1.24,2.08,1.9
-                      c28.16,28.14,56.32,56.29,84.48,84.44c5.22,5.21,5.21,10.67-0.01,15.89c-27.67,27.66-55.35,55.31-83,82.99
-                      c-2.22,2.23-4.45,4.37-7.52,5.36C56.68,196.01,55.42,196.01,54.17,196.01z"/>
-                    </svg>
-                  </span>
-                </a>
-              </div>
-              
-
-              <!-- <button id="openmap" class="openmap greenery">Open Full Map
+              <a
+                class="openmap greenery"
+                data-fancybox
+                data-src="./src/assets/maps/map-8.png"
+              >
+                Open Full Map
                 <span>
                   <svg version="1.1" id="paging" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
@@ -1341,14 +1476,8 @@
                     c-2.22,2.23-4.45,4.37-7.52,5.36C56.68,196.01,55.42,196.01,54.17,196.01z"/>
                   </svg>
                 </span>
-              </button>
-
-              <div id="lightbox" class="lightbox">
-                <div class="image-wrapper">
-                  <span class="tutup" id="close">&times;</span>
-                  <img src="./src/assets/maps/map-8.png" alt="Full Map" class="lightbox-content" id="lightbox-img">
-                </div>
-              </div> -->
+              </a>
+              
            </div>
 
           </div>
@@ -1487,16 +1616,43 @@
   <script src="./src/gsap/gsap.min.js" defer></script>
   <script src="./src/js/hover-effect.umd.js" defer></script>
   <script src="./src/js/three.min.js" defer></script>
-  <script type="module">
-    import PhotoSwipeLightbox from './src/js/photoswipe-lightbox.esm.js';
-    const options = {
-      gallery: '#gallery--individual a',
-      pswpModule: () => import('./src/js/photoswipe.esm.js')
-    };
-    const lightbox = new PhotoSwipeLightbox(options);
+  <script src="./src/js/fancybox.umd.js"></script>
+  <script>
+    Fancybox.bind('[data-fancybox]', {
+      // Single Lightbox
+    });    
+    Fancybox.bind('[data-fancybox="monument-suite"]', {
+      Carousel : {
+        infinite: false
+      }
+    });
     
-    lightbox.init();
+    Fancybox.bind('[data-fancybox="mandarin-deluxe"]', {
+      Carousel : {
+        infinite: false
+      }
+    });  
+
+    Fancybox.bind('[data-fancybox="urban-suite"]', {
+      Carousel : {
+        infinite: false
+      }
+    });  
+
+    Fancybox.bind('[data-fancybox="oriental-suite"]', {
+      Carousel : {
+        infinite: false
+      }
+    });  
+
+    Fancybox.bind('[data-fancybox="mandarin-suite"]', {
+      Carousel : {
+        infinite: false
+      }
+    });  
+
   </script>
+
   <script src="script.js" defer></script>
 </body>
 </html>

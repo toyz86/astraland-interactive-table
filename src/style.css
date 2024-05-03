@@ -457,7 +457,7 @@ button.opt-btn {
   margin-top: 2em;
   display: inline-flex;
   margin: 2em auto;
-  z-index: 99999;
+  z-index: 100;
   position: relative;
   cursor: pointer;
 }
@@ -987,6 +987,7 @@ button.opt-btn {
   opacity: 0;
   padding: 1vw;
   text-align: center;
+  font-size: 0.65vw;
 }
 .picker-items .link-to-project img {
   margin-top: 1vh;
@@ -1293,12 +1294,12 @@ ol, ul {
 
 .cluster-items {
   display: block;
-  margin: 1rem 0;
   text-transform: uppercase;
   letter-spacing: 3px;
   padding: 1rem 2rem;
   text-align: end;
   border-bottom: 1px solid #fff;
+  direction: ltr;
 }
 .cluster-items h2 {
   padding: 0 2rem 0 0;
@@ -1306,12 +1307,36 @@ ol, ul {
   letter-spacing: 3px;
   font-size: 1.1em;
 }
+.cluster-items button {
+  border: none;
+  background: #fff;
+  padding: 1em 3em;
+  border-radius: 2em;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.cluster-items button:active {
+  opacity: 0.5;
+}
 
 .d-flex-space-between {
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
+}
+
+.list-sold-w-btn button {
+  background: #fff;
+  padding: 1em 3em;
+  border-radius: 2em;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  min-width: 230px;
+  cursor: pointer;
+  border: none;
+  float: right;
 }
 
 .content-collapse li {
@@ -1332,6 +1357,7 @@ ol, ul {
   border-radius: 2em;
   font-size: 0.9em;
   text-transform: uppercase;
+  min-width: 230px;
   cursor: pointer;
 }
 .content-collapse li.d-flex-space-between button:active {
@@ -1507,126 +1533,53 @@ ol, ul {
   position: absolute;
 }
 
-.wc-box {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  z-index: 100;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
-.wc-box div {
-  position: relative;
-  width: 2vw;
-  height: 2vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.wc-box div:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.wc-box .minimize:before {
-  content: "";
-  width: 0.5vw;
-  height: 1px;
-  position: absolute;
-  background: #fff;
-}
-.wc-box .maximize:before {
-  content: "";
-  width: 0.5vw;
-  height: 0.5vw;
-  position: absolute;
-  border: 1px solid #fff;
-  border-radius: 2px;
-}
-.wc-box .exit:before {
-  content: "";
-  width: 0.75vw;
-  height: 1px;
-  position: absolute;
-  background: #fff;
-  transform: rotate(45deg);
-}
-.wc-box .exit:after {
-  content: "";
-  width: 0.75vw;
-  height: 1px;
-  position: absolute;
-  background: #fff;
-  transform: rotate(-45deg);
-}
-.wc-box .exit:hover {
-  background-color: #E04343;
+.gallery img {
+  display: block;
+  width: 100%;
 }
 
-.navbar-header {
-  position: fixed;
-  top: 0;
+.pswp__caption__center {
+  text-align: center;
+}
+
+.pswp__caption {
+  bottom: 3em;
+}
+.pswp__previews {
+  position: absolute;
+  bottom: 0;
   left: 0;
   width: 100%;
   display: flex;
-  z-index: 999999;
-}
-
-.top-header {
-  width: 90%;
-  height: 50px;
-  top: 0;
-  left: 0;
-  -webkit-app-region: drag;
-}
-
-.menu-wrapper {
-  position: absolute;
-  top: 5vh;
-  left: 5%;
-  z-index: 100;
-}
-.menu-wrapper .toggle-menu {
-  width: 2.5vw;
-  height: 2.5vw;
-  border-radius: 50%;
-  border: 1px solid #b28658;
-  display: flex;
+  flex-flow: row;
   justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  scrollbar-width: none;
 }
-.menu-wrapper .toggle-menu .menu-dot {
-  width: 10%;
-  height: 10%;
-  border-radius: 50%;
-  background: #b28658;
-  margin: 3px;
-}
-.menu-wrapper .menu-block {
-  background: #163C66;
-  color: #000;
-  padding: 1em 0;
-  border-radius: 1em;
-  margin-top: 1em;
-  color: #fff;
-  transform: translate(0, 100px) rotate(10deg);
-  opacity: 0;
+.pswp__previews::-webkit-scrollbar {
   display: none;
-  transform-origin: top left;
 }
-.menu-wrapper .menu-block .menu-link {
-  margin: 0.5em 2em;
+.pswp__previews img {
+  --size: 3em;
+  width: var(--size);
+  height: var(--size);
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.3;
+  transition: opacity 0.3s;
   cursor: pointer;
 }
-.menu-wrapper .menu-block .menu-link span {
-  margin-left: 2em;
-  opacity: 0.4;
+.pswp__previews img:hover {
+  opacity: 0.8;
 }
-.menu-wrapper .menu-block .break-line {
-  position: relative;
-  width: 100%;
-  height: 4px;
-  border-bottom: 2px solid #4f7cad;
-  border-top: 2px solid #0d2642;
-  margin: 0.25em 0;
+.pswp__previews img.is-active {
+  opacity: 1;
+  cursor: default;
 }
 
 @font-face {
