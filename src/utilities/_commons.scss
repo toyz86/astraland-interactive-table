@@ -464,7 +464,7 @@ button {
 	margin-top: 2em;
 	display: inline-flex;
 	margin: 2em auto;
-	z-index: 99999;
+	z-index: 100;
 	position: relative;
 	cursor: pointer;
 
@@ -1017,6 +1017,7 @@ button {
     opacity: 0;
     padding: 1vw;
     text-align: center;
+		font-size: 0.65vw;
 
 		img {
 			margin-top: 1vh;
@@ -1321,18 +1322,33 @@ ol, ul {
 
 .cluster-items {
 	display: block;
-	margin: 1rem 0;
+	// margin: 1rem 0;
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	padding: 1rem 2rem;
 	text-align: end;
 	border-bottom: 1px solid #fff;
+	direction: ltr;
 
 	h2 {
 		padding: 0 2rem 0 0;
 		position: relative;
 		letter-spacing: 3px;
 		font-size: 1.1em;
+	}
+
+	button {
+		border: none;
+		background: #fff;
+		padding: 1em 3em;
+		border-radius: 2em;
+		font-size: 0.9em;
+		text-transform: uppercase;
+		cursor: pointer;
+
+		&:active {
+			opacity: 0.5;
+		}
 	}
 }
 
@@ -1341,6 +1357,20 @@ ol, ul {
 	position: relative;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.list-sold-w-btn {
+	button {
+		background: #fff;
+    padding: 1em 3em;
+    border-radius: 2em;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    min-width: 230px;
+    cursor: pointer;
+    border: none;
+    float: right;
+	}
 }
 
 .content-collapse {
@@ -1362,6 +1392,7 @@ ol, ul {
 				border-radius: 2em;
 				font-size: 0.9em;
 				text-transform: uppercase;
+				min-width: 230px;
 				cursor: pointer;
 
 				&:active {
@@ -1668,4 +1699,61 @@ ol, ul {
 			margin: 0.25em 0;
 		}
 	}
+}
+
+
+
+// demo
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  img {
+    display: block;
+    width: 100%;
+  }// photoswipe
+}
+.pswp {
+  &__caption {
+    &__center {
+      text-align: center;
+    }// previews
+  }
+}
+.pswp {
+  &__caption {
+    bottom: 3em;
+  }
+  &__previews {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    background-color: rgba(black, 0.3);
+    overflow: auto;
+		// Hide scrollbar in Quantum (Firefox)
+    scrollbar-width: none;
+		// Hide scrollbar in Blink (Chrome)
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    img {
+      --size: 3em;
+      width: var(--size);
+      height: var(--size);
+      object-fit: cover;
+      opacity: 0.3;
+      transition: opacity 0.3s;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+      &.is-active {
+        opacity: 1;
+        cursor: default;
+      }
+    }
+  }
 }
