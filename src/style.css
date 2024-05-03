@@ -457,7 +457,7 @@ button.opt-btn {
   margin-top: 2em;
   display: inline-flex;
   margin: 2em auto;
-  z-index: 99999;
+  z-index: 100;
   position: relative;
   cursor: pointer;
 }
@@ -987,6 +987,7 @@ button.opt-btn {
   opacity: 0;
   padding: 1vw;
   text-align: center;
+  font-size: 0.65vw;
 }
 .picker-items .link-to-project img {
   margin-top: 1vh;
@@ -1293,12 +1294,12 @@ ol, ul {
 
 .cluster-items {
   display: block;
-  margin: 1rem 0;
   text-transform: uppercase;
   letter-spacing: 3px;
   padding: 1rem 2rem;
   text-align: end;
   border-bottom: 1px solid #fff;
+  direction: ltr;
 }
 .cluster-items h2 {
   padding: 0 2rem 0 0;
@@ -1306,12 +1307,36 @@ ol, ul {
   letter-spacing: 3px;
   font-size: 1.1em;
 }
+.cluster-items button {
+  border: none;
+  background: #fff;
+  padding: 1em 3em;
+  border-radius: 2em;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.cluster-items button:active {
+  opacity: 0.5;
+}
 
 .d-flex-space-between {
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
+}
+
+.list-sold-w-btn button {
+  background: #fff;
+  padding: 1em 3em;
+  border-radius: 2em;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  min-width: 230px;
+  cursor: pointer;
+  border: none;
+  float: right;
 }
 
 .content-collapse li {
@@ -1332,6 +1357,7 @@ ol, ul {
   border-radius: 2em;
   font-size: 0.9em;
   text-transform: uppercase;
+  min-width: 230px;
   cursor: pointer;
 }
 .content-collapse li.d-flex-space-between button:active {
@@ -1505,6 +1531,55 @@ ol, ul {
   left: -100%;
   top: -1%;
   position: absolute;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.gallery img {
+  display: block;
+  width: 100%;
+}
+
+.pswp__caption__center {
+  text-align: center;
+}
+
+.pswp__caption {
+  bottom: 3em;
+}
+.pswp__previews {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  scrollbar-width: none;
+}
+.pswp__previews::-webkit-scrollbar {
+  display: none;
+}
+.pswp__previews img {
+  --size: 3em;
+  width: var(--size);
+  height: var(--size);
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+.pswp__previews img:hover {
+  opacity: 0.8;
+}
+.pswp__previews img.is-active {
+  opacity: 1;
+  cursor: default;
 }
 
 @font-face {
