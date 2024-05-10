@@ -587,7 +587,7 @@ const virtuals = [
 ];
 
 const modalIds = [
-  'lavatera-type-6',
+  // 'lavatera-type-6',
   'lavatera-type-7',
   'lavatera-type-8',
   'arumaya-1',

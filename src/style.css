@@ -25,6 +25,19 @@ p {
   height: 100%;
 }
 
+.item-logo {
+  position: absolute;
+  width: 6vw;
+  height: auto;
+  top: 5vh;
+}
+.item-logo img {
+  width: 100%;
+}
+.item-logo.long {
+  width: 15vw;
+}
+
 section {
   position: relative;
   width: 100vw;
@@ -1193,6 +1206,9 @@ button.opt-btn {
   display: none;
 }
 .content h1 {
+  text-align: right;
+}
+.content p {
   text-align: right;
 }
 

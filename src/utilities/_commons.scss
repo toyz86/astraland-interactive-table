@@ -25,6 +25,21 @@ p {
 	}
 }
 
+.item-logo {
+	position: absolute;
+	width: 6vw;
+	height: auto;
+	top: 5vh;
+
+	img {
+		width: 100%;
+	}
+
+	&.long {
+		width: 15vw;
+	}
+}
+
 section {
 	position: relative;
 	width: 100vw;
@@ -1217,6 +1232,9 @@ button {
 .content {
 	display: none;
 	h1 {
+		text-align: right;
+	}
+	p {
 		text-align: right;
 	}
 }
