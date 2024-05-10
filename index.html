@@ -14,17 +14,7 @@
 </head>
 
 <body>
-
-  <!-- <div class="navbar-header">
-    <div class="top-header"></div>
-  
-    <div class="wc-box">
-      <div class="minimize"></div>
-      <div class="maximize"></div>
-      <div class="exit"></div>
-    </div>
-  </div> -->
-
+  <!-- BEGIN MENU BLOCK -->
   <div class="menu-wrapper">
     <div class="toggle-menu">
       <div class="menu-dot"></div>
@@ -61,7 +51,7 @@
       </div>
     </div>
   </div>
-
+  <!-- END MENU BLOCK -->
 
   <section id="mainpage" class="slides container">
     <div class="start-btn">
@@ -697,9 +687,39 @@
                         Type 7
                         <img src="./src/assets/sold.svg" alt="">
                       </li>
-                      <li>Type 9</li>
-                      <li>Type 12</li>
-                      <li>Type 13</li>
+                      <li class="d-flex-space-between">
+                        Type 9
+                        <button data-fancybox="matana-type-9" href="./src/assets/asya/floor-plan/MATANA,-Type-9,-13x14.jpg">
+                          See Floor Plan
+                        </button>
+          
+                        <div style="display:none">
+                          <a data-fancybox="matana-type-9" href="./src/assets/asya/floor-plan/MATANA,-Type-9,-9x14.jpg">
+                            <img src="./src/assets/asya/floor-plan/MATANA,-Type-9,-9x14.jpg" />
+                          </a>
+                          <a data-fancybox="matana-type-9" href="./src/assets/asya/floor-plan/MATANA,-Type-9,-9x17.jpg">
+                            <img src="./src/assets/asya/floor-plan/MATANA,-Type-9,-9x17.jpg" />
+                          </a>
+                        </div>
+                      </li>
+                      <li class="d-flex-space-between">
+                        Type 12
+                        <button data-fancybox="matana-type-12" href="./src/assets/asya/floor-plan/MATANA,-Type-12,-12x14.jpg">
+                          See Floor Plan
+                        </button>
+          
+                        <div style="display:none">
+                          <a data-fancybox="matana-type-12" href="./src/assets/asya/floor-plan/MATANA,-Type-12,-12x17.jpg">
+                            <img src="./src/assets/asya/floor-plan/MATANA,-Type-12,-12x17.jpg" />
+                          </a>
+                        </div>
+                      </li>
+                      <li class="d-flex-space-between">
+                        Type 13
+                        <button data-fancybox href="./src/assets/asya/floor-plan/MATANA,-Type-13.jpg">
+                          See Floor Plan
+                        </button>
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -788,7 +808,7 @@
                         <img src="./src/assets/sold.svg" alt="">
                         <button data-fancybox href="./src/assets/asya/floor-plan/Maninjau---Tipe-12,-2-Storey.jpg">
                           See Floor Plan
-                        </button>                        
+                        </button>
                       </li>
                       <li class="d-flex-space-between">
                         Type 14
@@ -897,13 +917,13 @@
             <div class="content" id="facilities-content">
               <div class="swiper-container">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" data-text="Semayang Matana Club House">
+                  <div class="swiper-slide" data-text="Swimming Pool">
                     <img src="./src/assets/asya/facilities/Copy of Semayang-Matana Club House.jpg" alt="anandamaya">
                   </div>
-                  <div class="swiper-slide" data-text="Maninjau Sentarum Swimming Pool">
+                  <!-- <div class="swiper-slide" data-text="Swimming Pool">
                     <img src="./src/assets/asya/facilities/Copy of Maninjau-Sentarum 4.jpg" alt="anandamaya">
-                  </div>
-                  <div class="swiper-slide" data-text="Maninjau Sentarum Club House">
+                  </div> -->
+                  <div class="swiper-slide" data-text="Club House">
                     <img src="./src/assets/asya/facilities/Copy of Copy of Maninjau-Sentarum 5.jpg" alt="anandamaya">
                   </div>
                 </div>
@@ -999,15 +1019,19 @@
 
               <div class="cluster-items d-flex-space-between">
                 <h2>Monument Room</h2>
-                <button data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-0.avif" data-caption="Monument Room 1">
-                  See Floor Plan
+                <!-- <button data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-0.avif" data-caption="Monument Room 1">
+                  See Photos
+                </button> -->
+
+                <button data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-0.avif">
+                  See Photos
                 </button>
   
                 <div style="display:none">
-                  <a data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-1.avif" data-caption="Monument Room 2">
+                  <a data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-1.avif">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Monument View-1.avif" />
                   </a>
-                  <a data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-2.webp" data-caption="Monument Room 3">
+                  <a data-fancybox="monument-suite" href="./src/assets/Mandarin Oriental/floor-plan/Monument View-2.webp">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Monument View-2.webp" />
                   </a>
                 </div>
@@ -1015,15 +1039,15 @@
 
               <div class="cluster-items d-flex-space-between">
                 <h2>Deluxe Room</h2>
-                <button data-fancybox="mandarin-deluxe" href="./src/assets/Mandarin Oriental/floor-plan/Deluxe-1.avif" data-caption="Deluxe Room 1">
-                  See Floor Plan
+                <button data-fancybox="mandarin-deluxe" href="./src/assets/Mandarin Oriental/floor-plan/Deluxe-1.avif">
+                  See Photos
                 </button>
   
                 <div style="display:none">
-                  <a data-fancybox="mandarin-deluxe" href="./src/assets/Mandarin Oriental/floor-plan/Deluxe-2.webp" data-caption="Deluxe Room 2">
+                  <a data-fancybox="mandarin-deluxe" href="./src/assets/Mandarin Oriental/floor-plan/Deluxe-2.webp">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Deluxe-2.webp" />
                   </a>
-                  <a data-fancybox="mandarin-deluxe" href="./src/assets/Mandarin Oriental/floor-plan/Deluxe-3.avif" data-caption="Deluxe Room 3">
+                  <a data-fancybox="mandarin-deluxe" href="./src/assets/Mandarin Oriental/floor-plan/Deluxe-3.avif">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Deluxe-3.avif" />
                   </a>
                 </div>
@@ -1031,18 +1055,18 @@
 
               <div class="cluster-items d-flex-space-between">
                 <h2>Urban Suite</h2>
-                <button data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-1.avif" data-caption="Urban Suite 1">
-                  See Floor Plan
+                <button data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-1.avif">
+                  See Photos
                 </button>
   
                 <div style="display:none">
-                  <a data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-2.avif" data-caption="Urban Suite 2">
+                  <a data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-2.avif">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Urban-2.avif" />
                   </a>
-                  <a data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-3.avif" data-caption="Urban Suite 3">
+                  <a data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-3.avif">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Urban-3.avif" />
                   </a>
-                  <a data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-4.avif" data-caption="Urban Suite 4">
+                  <a data-fancybox="urban-suite" href="./src/assets/Mandarin Oriental/floor-plan/Urban-4.avif">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Urban-4.avif" />
                   </a>
                 </div>
@@ -1050,15 +1074,15 @@
 
               <div class="cluster-items d-flex-space-between">
                 <h2>Oriental Suite</h2>
-                <button data-fancybox="oriental-suite" href="./src/assets/Mandarin Oriental/floor-plan/Oriental-1.avif" data-caption="Oriental Suite 1">
-                  See Floor Plan
+                <button data-fancybox="oriental-suite" href="./src/assets/Mandarin Oriental/floor-plan/Oriental-1.avif">
+                  See Photos
                 </button>
   
                 <div style="display:none">
-                  <a data-fancybox="oriental-suite" href="./src/assets/Mandarin Oriental/floor-plan/Oriental-2.avif" data-caption="Oriental Suite 2">
+                  <a data-fancybox="oriental-suite" href="./src/assets/Mandarin Oriental/floor-plan/Oriental-2.avif">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Oriental-2.avif" />
                   </a>
-                  <a data-fancybox="oriental-suite" href="./src/assets/Mandarin Oriental/floor-plan/Oriental-3.avif" data-caption="Oriental Suite 3">
+                  <a data-fancybox="oriental-suite" href="./src/assets/Mandarin Oriental/floor-plan/Oriental-3.avif">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Oriental-3.avif" />
                   </a>
                 </div>
@@ -1066,15 +1090,15 @@
 
               <div class="cluster-items d-flex-space-between">
                 <h2>Mandarin Suite</h2>
-                <button data-fancybox="mandarin-suite" href="./src/assets/Mandarin Oriental/floor-plan/Mandarin-1.avif" data-caption="Mandarin Suite 1">
-                  See Floor Plan
+                <button data-fancybox="mandarin-suite" href="./src/assets/Mandarin Oriental/floor-plan/Mandarin-1.avif">
+                  See Photos
                 </button>
   
                 <div style="display:none">
-                  <a data-fancybox="mandarin-suite" href="./src/assets/Mandarin Oriental/floor-plan/Mandarin-2.avif" data-caption="Mandarin Suite 2">
+                  <a data-fancybox="mandarin-suite" href="./src/assets/Mandarin Oriental/floor-plan/Mandarin-2.avif">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Mandarin-2.avif" />
                   </a>
-                  <a data-fancybox="mandarin-suite" href="./src/assets/Mandarin Oriental/floor-plan/Mandarin-3.avif" data-caption="Mandarin Suite 3">
+                  <a data-fancybox="mandarin-suite" href="./src/assets/Mandarin Oriental/floor-plan/Mandarin-3.avif">
                     <img src="./src/assets/Mandarin Oriental/floor-plan/Mandarin-3.avif" />
                   </a>
                 </div>
@@ -1272,7 +1296,7 @@
                         2 Bedroom
                         <button data-fancybox href="./src/assets/Arumaya/floor-plan/Garden-Villa---2-BR.jpg">
                           See Floor Plan
-                        </button>                        
+                        </button>
                         <button class="arumaya3">See Virtual Tour</button>
                       </li>
                       <li class="d-flex-space-between">
@@ -1397,16 +1421,15 @@
                 <div class="collapsible-body">
                   <div class="content-collapse">
                     <ol>
-                      <li class="d-flex-space-between">
+                      <!-- <li class="d-flex-space-between">
                         Type 6
                         <button class="ammaia">See Virtual Tour</button>
-                      </li>
+                      </li> -->
                       <li class="d-flex-space-between">
                         Type 7
                         <button
-                          class="openmap greenery"
                           data-fancybox
-                          data-src="./src/assets/ammaia/floor-plan/Ammaia---Tipe-7.jpg"
+                          href="./src/assets/Ammaia/floor-plan/ammaia-tipe-7.jpg"
                         >
                           See Floor Plan
                         </button>
@@ -1415,9 +1438,8 @@
                       <li class="d-flex-space-between">
                         Type 8
                         <button
-                          class="openmap greenery"
                           data-fancybox
-                          data-src="./src/assets/ammaia/floor-plan/Ammaia---Tipe-8.jpg"
+                          href="./src/assets/Ammaia/floor-plan/ammaia-tipe-8.jpg"
                         >
                           See Floor Plan
                         </button>
@@ -1619,38 +1641,53 @@
   <script src="./src/js/three.min.js" defer></script>
   <script src="./src/js/fancybox.umd.js"></script>
   <script>
+
+    // Disable element Drag
+    const body = document.querySelector('body');
+        
+    // Disable text selection
+    body.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+    });
+
+    // Disable image dragging
+    body.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+    });
+
+    // Disable double click
+    body.addEventListener('dblclick', function(e) {
+        e.preventDefault();
+    });
+
     Fancybox.bind('[data-fancybox]', {
       // Single Lightbox
     });    
-    Fancybox.bind('[data-fancybox="monument-suite"]', {
-      Carousel : {
-        infinite: false
-      }
+
+    const fancyboxes = [
+      { selector: '[data-fancybox="monument-suite"]' },
+      { selector: '[data-fancybox="mandarin-deluxe"]' },
+      { selector: '[data-fancybox="urban-suite"]' },
+      { selector: '[data-fancybox="oriental-suite"]' },
+      { selector: '[data-fancybox="mandarin-suite"]' },
+      { selector: '[data-fancybox="matana-type-9"]' },
+      { selector: '[data-fancybox="matana-type-12"]' },
+      { selector: '[data-fancybox="toba-500"]' },
+      { selector: '[data-fancybox="maninjau-type-8"]' },
+      { selector: '[data-fancybox="maninjau-type-10"]' },
+      { selector: '[data-fancybox="maninjau-type-14"]' },
+      { selector: '[data-fancybox="sentarum-tipe-6"]' },
+      { selector: '[data-fancybox="sentarum-tipe-9"]' },
+    ];
+
+    fancyboxes.forEach(item => {
+      Fancybox.bind(item.selector, {
+        Carousel: {
+          infinite: false
+        }
+      });
     });
-    
-    Fancybox.bind('[data-fancybox="mandarin-deluxe"]', {
-      Carousel : {
-        infinite: false
-      }
-    });  
 
-    Fancybox.bind('[data-fancybox="urban-suite"]', {
-      Carousel : {
-        infinite: false
-      }
-    });  
-
-    Fancybox.bind('[data-fancybox="oriental-suite"]', {
-      Carousel : {
-        infinite: false
-      }
-    });  
-
-    Fancybox.bind('[data-fancybox="mandarin-suite"]', {
-      Carousel : {
-        infinite: false
-      }
-    });  
 
   </script>
 

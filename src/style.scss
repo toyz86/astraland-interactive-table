@@ -120,6 +120,13 @@ body {
 	color: #fff;
 	justify-content: center;
 	overflow: hidden;
+
+	user-select: none; /* Disable text selection */
+	-webkit-user-drag: none; /* Disable image dragging for Safari */
+	-webkit-user-select: none; /* Disable text selection for Safari */
+	-moz-user-select: none; /* Disable text selection for Firefox */
+	-ms-user-select: none; /* Disable text selection for IE/Edge */
+
 }
 .bg {
 	position: fixed;

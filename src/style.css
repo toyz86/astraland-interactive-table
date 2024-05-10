@@ -426,6 +426,9 @@ a {
   background: radial-gradient(ellipse at center, #b28658 0%, rgba(0, 0, 0, 0) 50%);
 }
 
+button {
+  transition: all 0.2s ease;
+}
 button.opt-btn {
   padding: 0.7em 1em 0.7em 2em;
   background: none;
@@ -1319,6 +1322,9 @@ ol, ul {
 .cluster-items button:active {
   opacity: 0.5;
 }
+.cluster-items button:focus {
+  opacity: 0.5;
+}
 
 .d-flex-space-between {
   display: flex;
@@ -1361,6 +1367,9 @@ ol, ul {
   cursor: pointer;
 }
 .content-collapse li.d-flex-space-between button:active {
+  opacity: 0.5;
+}
+.content-collapse li.d-flex-space-between button:focus {
   opacity: 0.5;
 }
 .content-collapse li img {
@@ -1471,6 +1480,9 @@ ol, ul {
   cursor: pointer;
 }
 .lang-btn:active {
+  opacity: 0.5;
+}
+.lang-btn:focus {
   opacity: 0.5;
 }
 
@@ -1588,8 +1600,8 @@ ol, ul {
 
 .menu-wrapper {
   position: absolute;
-  top: 5vh;
-  left: 5%;
+  top: 3%;
+  left: 1.5%;
   z-index: 100;
 }
 .menu-wrapper .toggle-menu {
@@ -1781,6 +1793,11 @@ body {
   color: #fff;
   justify-content: center;
   overflow: hidden;
+  user-select: none; /* Disable text selection */
+  -webkit-user-drag: none; /* Disable image dragging for Safari */
+  -webkit-user-select: none; /* Disable text selection for Safari */
+  -moz-user-select: none; /* Disable text selection for Firefox */
+  -ms-user-select: none; /* Disable text selection for IE/Edge */
 }
 
 .bg {

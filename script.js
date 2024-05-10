@@ -255,7 +255,7 @@ function hideMilestoneNav() {
 
 // Show each sections based on Index
 function showSection(index) {
-  // Semua section dimatikan
+  // Hide All Sections
   sections.forEach(function(section) {
     section.style.display = 'none';
   });
@@ -306,7 +306,6 @@ function showSection(index) {
     });
   });
 
-  // Tambahkan event listener untuk tombol "next" di dalam setiap section
   const nextBtns = sections[index].querySelectorAll('.next-slide');
 
   nextBtns.forEach(nextBtn => {
@@ -327,8 +326,6 @@ function showSection(index) {
     });
   });
 
-
-  // Animasi menggunakan GSAP untuk setiap transisi
   gsap.from(sections[index], { opacity: 0, duration: 0.3 });
 
   currentIndex = index;
@@ -342,7 +339,7 @@ function showSection(index) {
   const numSlideItems = slideItems.length;
   // console.log("Jumlah slides-items pada currentIndex:", numSlideItems);
 
-  // Memperbarui navigasi setelah menambahkan atau mengurangi index aktif
+  // Update navigasi setelah menambahkan atau mengurangi index aktif
   updateNavigation(prevBtns, nextBtns, activeIndex, numSlideItems);
   stopVideosOnSlideChange(slideItems);
   playVideoOnSlideChange(slideItems, activeIndex);
@@ -368,7 +365,7 @@ function stopVideosOnSlideChange(slideItems) {
 }
 
 function updateNavigation(prevBtns, nextBtns, activeIndex, numSlideItems) {
-  // Nonaktifkan tombol "prev" jika sudah berada di indeks pertama
+  // disabled button "prev" if in first index
   if (activeIndex === 0) {
     prevBtns.forEach(prevBtn => {
       // prevBtn.disabled = true;
@@ -382,7 +379,7 @@ function updateNavigation(prevBtns, nextBtns, activeIndex, numSlideItems) {
     });
   }
 
-  // Nonaktifkan tombol "next" jika sudah berada di indeks terakhir
+  // disabled button "next" if in last index
   if (activeIndex === numSlideItems - 1) {
     nextBtns.forEach(nextBtn => {
       // nextBtn.disabled = true;
@@ -411,9 +408,7 @@ document.querySelectorAll('.link-to-project').forEach(link => {
 btnnext.addEventListener('click', function() {
   // console.log(currentIndex)
   
-  // Periksa apakah sudah mencapai akhir daftar elemen
   if (currentIndex < sections.length - 1) {
-    // Jika saat ini pada indeks pertama, terapkan transisi sebelum pindah ke indeks selanjutnya
     if (currentIndex === 0) {
       gsap.to('.brand-wrapper:nth-child(1)', { y:-100, opacity: 0 })
       gsap.to('.brand-wrapper:nth-child(2)', { y: 100, opacity: 0 })
@@ -428,11 +423,6 @@ btnnext.addEventListener('click', function() {
         showSection(currentIndex);
       }});
     } 
-    // else if (currentIndex === 2 && document.querySelector('.picker-items.highlight')) {
-    //   const selectedIndex = document.querySelector('.picker-items.highlight').id;
-    //   const targetIndex = Array.from(sections).findIndex(section => section.id === selectedIndex);
-    //   showSection(targetIndex);
-    // }
      else {
       currentIndex++;
       showSection(currentIndex);
@@ -450,7 +440,7 @@ btnback.addEventListener('click', function() {
     gsap.to('.left-greyscale', 0.5, { y: 0, ease: "circ.in" })
     gsap.to('.line-divider', 1, { opacity: 1 })
   }
-  // Periksa apakah sudah mencapai awal daftar elemen
+
   if (currentIndex > 0) {
     currentIndex--;
     showSection(currentIndex);
@@ -459,7 +449,6 @@ btnback.addEventListener('click', function() {
 
 hideNavigation();
 
-// Tampilkan section pertama saat halaman dimuat
 showSection(currentIndex);
 
 const breadCrumps = document.querySelectorAll('.breadcrump-items');
@@ -580,8 +569,8 @@ function toggleModal(sectionId) {
 
 
 
-const triggers = [
-  '.ammaia',
+const virtuals = [
+  // '.ammaia',
   '.ammaia2',
   '.ammaia3',
   '.arumaya1',
@@ -614,15 +603,15 @@ const modalIds = [
   'toba-lake'
 ];
 
-triggers.forEach((trigger, index) => {
-  const triggerElement = document.querySelector(trigger);
-  if (triggerElement) {
-    triggerElement.addEventListener('click', function(event) {
+virtuals.forEach((virtual, index) => {
+  const virtualElement = document.querySelector(virtual);
+  if (virtualElement) {
+    virtualElement.addEventListener('click', function(event) {
       event.preventDefault();
       toggleModal(modalIds[index]);
     });
   } else {
-    console.error(`Elemen trigger dengan selector ${trigger} tidak ditemukan.`);
+    console.error(`Element Virtual ${virtual} not finded.`);
   }
 });
 
@@ -714,7 +703,6 @@ document.body.addEventListener("click", function(event) {
     }
   }
 });
-
 
 // Language Redirect
 

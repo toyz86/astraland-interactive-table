@@ -6,7 +6,7 @@ const ipc = ipcMain;
 
 process.env.NODE_ENV = 'production';
 
-const isDev = process.env.NODE_ENV !== 'development';
+const isDev = process.env.NODE_ENV !== 'production';
 
 function createWindow () {
   const win = new BrowserWindow({
