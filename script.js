@@ -288,7 +288,6 @@ function showSection(index) {
     }
   });
 
-
   const prevBtns = sections[index].querySelectorAll('.prev-slide');
   prevBtns.forEach(prevBtn => {
     prevBtn.addEventListener('click', function() {
