@@ -1211,6 +1211,13 @@ button.opt-btn {
 .content p {
   text-align: right;
 }
+.content p.cluster-type {
+  position: relative;
+  text-align: left;
+}
+.content p.cluster-type img {
+  position: absolute;
+}
 
 .list-items {
   display: grid;
@@ -1267,7 +1274,7 @@ ol, ul {
 }
 .collapsible-section .collapsible-body > .content-collapse {
   text-align: end;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
 }
 .collapsible-section .collapsible-header {
   color: #fff9fb;
@@ -1325,6 +1332,7 @@ ol, ul {
   position: relative;
   letter-spacing: 3px;
   font-size: 1.1em;
+  text-align: left;
 }
 .cluster-items button {
   border: none;
@@ -1343,10 +1351,10 @@ ol, ul {
 }
 
 .d-flex-space-between {
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 40% 30% 30%;
+  gap: 1em;
 }
 
 .list-sold-w-btn button {
@@ -1368,9 +1376,10 @@ ol, ul {
   margin: 1em auto;
 }
 .content-collapse li.d-flex-space-between {
-  display: flex;
-  position: relative;
-  justify-content: space-between;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 40% 30% 30%;
+  gap: 1em;
 }
 .content-collapse li.d-flex-space-between button {
   border: none;
@@ -1391,7 +1400,6 @@ ol, ul {
 .content-collapse li img {
   width: 4em;
   position: relative;
-  left: -1em;
   top: -1em;
   transform: rotate(-15deg);
 }
