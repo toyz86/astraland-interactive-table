@@ -22,6 +22,9 @@ function createWindow () {
     title: 'Astraland App'
   })
 
+  win.maximize();
+  win.show();
+
   win.setMenuBarVisibility(false) // Hide menus bar
 
   if (isDev) {
