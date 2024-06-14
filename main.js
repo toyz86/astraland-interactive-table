@@ -10,9 +10,12 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 function createWindow () {
   const win = new BrowserWindow({
-    width: isDev ? 1280 : 800,
-    height: isDev ? 720 : 600,
+    // width: isDev ? 1280 : 800,
+    // height: isDev ? 720 : 600,
     // frame: false,
+    width: 1920,
+    height: 1080,
+    // transparent: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -21,6 +24,7 @@ function createWindow () {
     },
     title: 'Astraland App'
   })
+  win.setBackgroundColor('#000')
 
   win.maximize();
   win.show();
