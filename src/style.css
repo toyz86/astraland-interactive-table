@@ -819,7 +819,7 @@ button.opt-btn {
 }
 .logos-milestone:before {
   content: "";
-  background: #fff;
+  background: rgba(255, 255, 255, 0.3);
   width: 100vw;
   height: 1px;
   position: absolute;
@@ -889,6 +889,21 @@ button.opt-btn {
 .logo-items-wrapper.highlight {
   opacity: 1;
   transition: all 0.3s ease;
+}
+.logo-items-wrapper.highlight:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(45deg, transparent, #fff, transparent);
+}
+.logo-items-wrapper:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, transparent, #fff, transparent);
 }
 .logo-items-wrapper:before {
   content: "";
