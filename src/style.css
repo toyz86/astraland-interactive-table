@@ -786,6 +786,15 @@ button.opt-btn {
   height: 100%;
   background: linear-gradient(-90deg, rgb(7, 36, 26) 50%, transparent 100%);
 }
+.bg-cluster.dark-navy::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-90deg, rgb(3, 28, 54) 50%, transparent 100%);
+}
 
 .center-aligned {
   position: relative;
@@ -877,6 +886,10 @@ button.opt-btn {
   align-items: center;
   text-align: center;
 }
+.logo-items-wrapper.highlight {
+  opacity: 1;
+  transition: all 0.3s ease;
+}
 .logo-items-wrapper:before {
   content: "";
   background: #fff;
@@ -925,10 +938,99 @@ button.opt-btn {
 
 .milestone-picker {
   position: relative;
-  transform: scale(0.6);
-  width: 71.1vw;
-  height: 55vh;
   margin: auto;
+}
+
+.milestone-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+}
+.milestone-wrapper .milestone-picker {
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+.milestone-wrapper .milestone-picker .picker-items {
+  position: relative;
+  opacity: 0.3;
+  cursor: pointer;
+}
+.milestone-wrapper .milestone-picker .picker-items img {
+  width: 100%;
+  filter: grayscale(1);
+  height: auto;
+}
+.milestone-wrapper .milestone-picker .picker-items.highlight {
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+.milestone-wrapper .milestone-picker .picker-items.highlight img {
+  filter: drop-shadow(0px 0px 20px #fff) grayscale(1);
+  transition: all 0.3s ease;
+}
+.milestone-wrapper .milestone-picker .picker-items .link-to-project {
+  position: absolute;
+  width: 5vw;
+  height: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+  background: #b28658;
+  left: 50%;
+  top: -20%;
+  transform: translateX(-50%) scale(1);
+  border: none;
+  display: none;
+  opacity: 0;
+  padding: 1vw;
+  text-align: center;
+  font-size: 0.65vw;
+}
+.milestone-wrapper .milestone-picker .picker-items .link-to-project img {
+  margin-top: 1vh;
+  width: 20px;
+  height: auto;
+  transform: rotate(-45deg);
+}
+.milestone-wrapper .milestone-picker .picker-items .link-to-project .ring {
+  position: absolute;
+  background: #b28658;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0.3;
+  z-index: -1;
+}
+.milestone-wrapper .milestone-picker .picker-items:nth-child(1) {
+  width: 12vw;
+}
+.milestone-wrapper .milestone-picker .picker-items:nth-child(2) {
+  margin-left: -0.59vw;
+  width: 10vw;
+}
+.milestone-wrapper .milestone-picker .picker-items:nth-child(3) {
+  width: 17vw;
+  margin-left: -5.3vw;
+  margin-bottom: -0.2vw;
+  z-index: 1;
+}
+.milestone-wrapper .milestone-picker .picker-items:nth-child(4) {
+  width: 11.6vw;
+  margin-left: -11.6vw;
+  margin-bottom: 2.2vw;
+}
+.milestone-wrapper .milestone-picker .picker-items:nth-child(5) {
+  width: 10vw;
+}
+.milestone-wrapper .milestone-picker .picker-items:nth-child(6) {
+  width: 9.3vw;
 }
 
 .year {
@@ -977,87 +1079,6 @@ button.opt-btn {
 
 .mt-50 {
   margin-top: 15vh;
-}
-
-.picker-items {
-  position: absolute;
-  opacity: 0.3;
-  cursor: pointer;
-}
-.picker-items img {
-  width: 100%;
-  filter: grayscale(1);
-  height: auto;
-}
-.picker-items:nth-child(1) {
-  width: 19vw;
-  bottom: 0;
-}
-.picker-items:nth-child(2) {
-  left: 18.1vw;
-  bottom: 0.2vh;
-  width: 15.8vw;
-}
-.picker-items:nth-child(3) {
-  z-index: 1;
-  left: 25.5vw;
-  bottom: -0.4vh;
-  width: 27vw;
-}
-.picker-items:nth-child(4) {
-  left: 34vw;
-  bottom: 3.6vw;
-  width: 18.4vw;
-}
-.picker-items:nth-child(5) {
-  width: 17.8vw;
-  right: 1vw;
-  bottom: 0;
-}
-.picker-items.highlight img {
-  filter: drop-shadow(0px 0px 20px #fff) grayscale(1);
-  transition: all 0.3s ease;
-}
-.picker-items .link-to-project {
-  position: absolute;
-  width: 5vw;
-  height: 5vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  border-radius: 50%;
-  background: #b28658;
-  left: 50%;
-  top: -20%;
-  transform: translateX(-50%) scale(1.5);
-  border: none;
-  display: none;
-  opacity: 0;
-  padding: 1vw;
-  text-align: center;
-  font-size: 0.65vw;
-}
-.picker-items .link-to-project img {
-  margin-top: 1vh;
-  width: 20px;
-  height: auto;
-  transform: rotate(-45deg);
-}
-.picker-items .link-to-project .ring {
-  position: absolute;
-  background: #b28658;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  opacity: 0.3;
-  z-index: -1;
-}
-
-.highlight {
-  opacity: 1;
-  transition: all 0.3s ease;
 }
 
 .hidden {
@@ -1229,6 +1250,13 @@ button.opt-btn {
   color: rgb(7, 36, 26);
 }
 .breadcrump-items.greenery.is-Active {
+  background: #fff;
+}
+.breadcrump-items.cream {
+  background: #e2d0b8;
+  color: #031c36;
+}
+.breadcrump-items.cream.is-Active {
   background: #fff;
 }
 
