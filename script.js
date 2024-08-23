@@ -538,6 +538,30 @@ document.querySelector('.logo-home').addEventListener('click', function(e) {
   contents.forEach((item) => {
     item.classList.remove('d-block');
   })
+
+  gsap.to('.navy-overlay', 1, { opacity: 1, visibility: 'visible', xPercent: 0, yPercent: 0, ease: "power2.out" });
+  
+  gsap.to('.left-content-wrapper', 1, {
+    opacity: 1,
+    display: "flex",
+  })
+  gsap.to('.left-content', 0.5, { y: "0%", x: "100%", opacity: 1, display: 'block' })
+  gsap.to('.left-greyscale', { x: "-100%", delay: 0.3 })
+  gsap.to('.right-greyscale', { x: "100%", delay: 0.3 })
+  
+  gsap.to('.brand-content-left', {
+    opacity: 1,  
+    display: "block",
+    y: '-100px',
+    duration: 0.5,
+  })
+
+  gsap.to('.btn-text', { yPercent: 0, opacity: 1 })
+  gsap.to('.logo-mask', 1, { scale: 1, yPercent: 0, delay: 0.3, ease: "power2.in" });
+  gsap.to('.logo-mask', { delay:0.8, display: 'block' });
+  gsap.to('.bg-overlay', { opacity: 1, delay: 0.8 });
+  gsap.to(nav, { delay:0.8, opacity: 1, display: 'flex' });
+  
 })
 
 breadCrumps.forEach((breadCrump, i) => {
