@@ -1,3 +1,81 @@
+@font-face {
+  font-family: "Open Sans Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans Regular"), url("./fonts/OpenSans-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans"), url("./fonts/OpenSans-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans Italic"), url("./fonts/OpenSans-Italic.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans Light"), url("./fonts/OpenSans-Light.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans Light Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans Light Italic"), url("./fonts/OpenSans-LightItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans SemiBold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans SemiBold"), url("./fonts/OpenSans-SemiBold.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans SemiBold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans SemiBold Italic"), url("./fonts/OpenSans-SemiBoldItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans Bold"), url("./fonts/OpenSans-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans Bold Italic"), url("./fonts/OpenSans-BoldItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans ExtraBold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans ExtraBold"), url("./fonts/OpenSans-ExtraBold.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans ExtraBold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans ExtraBold Italic"), url("./fonts/OpenSans-ExtraBoldItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans Light Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans Light Regular"), url("./fonts/OpenSans-Light-webfont.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans Condensed Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Open Sans Condensed Bold"), url("./fonts/OpenSans-CondBold.woff") format("woff");
+}
 p {
   font-size: 1em;
   line-height: 2;
@@ -91,6 +169,16 @@ section {
 
 .slides {
   display: none;
+}
+.slides .clustervideo {
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+.slides .clustervideo.fade-in {
+  opacity: 1;
+}
+.slides .clustervideo.fade-out {
+  opacity: 0;
 }
 
 .btn-text {
@@ -951,16 +1039,12 @@ button.opt-btn {
   margin: auto;
 }
 
-.milestone-picker {
-  position: relative;
-  margin: auto;
-}
-
 .milestone-wrapper {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  margin-top: 10vh;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8vh;
+  z-index: 10;
 }
 .milestone-wrapper .milestone-picker {
   position: relative;
@@ -1609,6 +1693,15 @@ ol, ul {
   margin-bottom: 1.5em;
 }
 
+.bg-cluster img {
+  transition: opacity 0.1s ease-out;
+  opacity: 1;
+}
+
+.bg-cluster img.fade-out {
+  opacity: 0;
+}
+
 .items-wrapper {
   text-align: center;
   margin-bottom: 1.5em;
@@ -1800,84 +1893,6 @@ ol, ul {
   cursor: default;
 }
 
-@font-face {
-  font-family: "Open Sans Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans Regular"), url("./fonts/OpenSans-Regular.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans"), url("./fonts/OpenSans-Regular.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans Italic";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans Italic"), url("./fonts/OpenSans-Italic.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans Light";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans Light"), url("./fonts/OpenSans-Light.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans Light Italic";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans Light Italic"), url("./fonts/OpenSans-LightItalic.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans SemiBold";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans SemiBold"), url("./fonts/OpenSans-SemiBold.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans SemiBold Italic";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans SemiBold Italic"), url("./fonts/OpenSans-SemiBoldItalic.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans Bold";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans Bold"), url("./fonts/OpenSans-Bold.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans Bold Italic";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans Bold Italic"), url("./fonts/OpenSans-BoldItalic.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans ExtraBold";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans ExtraBold"), url("./fonts/OpenSans-ExtraBold.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans ExtraBold Italic";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans ExtraBold Italic"), url("./fonts/OpenSans-ExtraBoldItalic.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans Light Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans Light Regular"), url("./fonts/OpenSans-Light-webfont.woff") format("woff");
-}
-@font-face {
-  font-family: "Open Sans Condensed Bold";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Open Sans Condensed Bold"), url("./fonts/OpenSans-CondBold.woff") format("woff");
-}
 * {
   box-sizing: border-box;
   margin: 0;

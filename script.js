@@ -21,12 +21,6 @@ function buttonOnStated() {
   }) 
 }
 
-// Hide Navigation on first load
-// Redirect to Home
-document.querySelector('.logo-home').addEventListener('click', function() {
-  window.location.reload()
-})
-
 // Toggle Menu to view Astra and Hongkongland
 const brands = document.querySelectorAll('.opt-btn');
 const btnback = document.querySelector('.prev-nav');
@@ -132,6 +126,65 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(slide);
   });
 });
+
+document.querySelectorAll('video.clustervideo').forEach((video) => {
+  const fadeDuration = 1; // Duration in seconds for audio fade-in/out
+  const fadeOutTime = 2; // Time in seconds before the end to start fading out
+
+  // Function to gradually increase the volume (fade-in)
+  function fadeIn(video) {
+    video.classList.add('fade-in');
+    video.classList.remove('fade-out');
+    video.volume = 0;
+
+    const volumeInterval = setInterval(() => {
+      if (video.volume < 1) {
+        video.volume = Math.min(video.volume + 0.1, 1);
+      } else {
+        clearInterval(volumeInterval);
+      }
+    }, fadeDuration * 100); // Adjust this to match the desired fade-in duration
+  }
+
+  // Function to gradually decrease the volume (fade-out)
+  function fadeOut(video) {
+    const volumeInterval = setInterval(() => {
+      if (video.volume > 0) {
+        video.volume = Math.max(video.volume - 0.1, 0);
+      } else {
+        clearInterval(volumeInterval);
+      }
+    }, fadeDuration * 100); // Adjust this to match the desired fade-out duration
+  }
+
+  // Fade in when the video starts
+  video.addEventListener('play', () => {
+    fadeIn(video);
+  });
+
+  // Fade out when the video is about to end
+  video.addEventListener('timeupdate', () => {
+    if (video.duration - video.currentTime <= fadeOutTime) {
+      video.classList.add('fade-out');
+      fadeOut(video);
+    } else {
+      video.classList.remove('fade-out');
+    }
+  });
+
+  // Reset volume and fade in again when the video loops
+  video.addEventListener('ended', () => {
+    video.currentTime = 0;
+    video.play(); // Automatically restart the video if it's looping
+    fadeIn(video);
+  });
+
+  // Ensure the video starts with fade-in if it's auto-playing or triggered programmatically
+  if (!video.paused && video.readyState >= 2) {
+    fadeIn(video);
+  }
+});
+
 
 gsap.to(".ring", {
   scale: 1.75,
@@ -471,6 +524,22 @@ document.querySelector('.cta-button').addEventListener('click', function(event) 
 
 });
 
+// Hide Navigation on first load
+// Redirect to Home
+document.querySelector('.logo-home').addEventListener('click', function(e) {
+  e.preventDefault();
+  showSection(0);
+
+  // Make Sure each class 'is-Active' and 'd-block' in slide items remove
+  breadCrumps.forEach((item) => {
+    item.classList.remove('is-Active');
+  });
+
+  contents.forEach((item) => {
+    item.classList.remove('d-block');
+  })
+})
+
 breadCrumps.forEach((breadCrump, i) => {
   breadCrump.addEventListener('click', function() {
     // remove 'is-Active' class from all breadCrump items
@@ -507,7 +576,14 @@ function updateContentAndBehavior() {
 
     if (accessbg && bgCluster) {
       if (accessbg.classList.contains('d-block')) {
-        bgCluster.src = `./src/assets/maps/map-${index + 1}.png`;
+        bgCluster.classList.add('fade-out');
+        setTimeout(() => {
+          bgCluster.src = `./src/assets/maps/map-${index + 1}.png`;
+
+          bgCluster.onload = () => {
+            bgCluster.classList.remove('fade-out');
+          };
+        }, 100);
       } else {
         bgCluster.src = `./src/assets/hero-images/${index + 1}.jpg`;
       }
