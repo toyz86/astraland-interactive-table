@@ -17,7 +17,7 @@ function buttonOnStated() {
     gsap.to('.next-prev-wrapper', { autoAlpha: 1, delay: 1.4 });
     gsap.to('.brand-wrapper', { display: 'block', autoAlpha: 1, delay: 1.4 } );
     gsap.to('.line-divider', { display: 'block', autoAlpha: 1, delay: 1.4 } );
-    branddashboard.classList.add("isActive");
+    // branddashboard.classList.add("isActive");
   }) 
 }
 
@@ -91,8 +91,6 @@ for (let i = 0; i < brands.length; i++) {
         y: direction === 1 ? '0px' : '-100px'
       })
     }
-    
-    // console.log("Clicked element index:", i);
   });
 }
 
@@ -539,29 +537,23 @@ document.querySelector('.logo-home').addEventListener('click', function(e) {
     item.classList.remove('d-block');
   })
 
-  gsap.to('.navy-overlay', 1, { opacity: 1, visibility: 'visible', xPercent: 0, yPercent: 0, ease: "power2.out" });
-  
-  gsap.to('.left-content-wrapper', 1, {
-    opacity: 1,
-    display: "flex",
-  })
-  gsap.to('.left-content', 0.5, { y: "0%", x: "100%", opacity: 1, display: 'block' })
-  gsap.to('.left-greyscale', { x: "-100%", delay: 0.3 })
-  gsap.to('.right-greyscale', { x: "100%", delay: 0.3 })
-  
-  gsap.to('.brand-content-left', {
-    opacity: 1,  
-    display: "block",
-    y: '-100px',
-    duration: 0.5,
-  })
+  var onStart = gsap.timeline();
+  onStart.to('.bg-overlay', { opacity: 1 });
+  onStart.to('.logo-mask', 1, { display: 'block', scale: 1, yPercent: 0, ease: "power2.out" });
+  onStart.to('.btn-text', { yPercent: 0, opacity: 1 })
+  onStart.to(nav, { opacity: 0, display: 'flex' });
 
-  gsap.to('.btn-text', { yPercent: 0, opacity: 1 })
-  gsap.to('.logo-mask', 1, { scale: 1, yPercent: 0, delay: 0.3, ease: "power2.in" });
-  gsap.to('.logo-mask', { delay:0.8, display: 'block' });
-  gsap.to('.bg-overlay', { opacity: 1, delay: 0.8 });
-  gsap.to(nav, { delay:0.8, opacity: 1, display: 'flex' });
-  
+  gsap.set('.navy-overlay', { visibility: 'visible', opacity: 1, x: '0px', y: '0px', xPercent: 0, yPercent: 0 });
+  gsap.set('.brand-wrapper', { opacity: 1, display: 'block', x: '0px', y: '0px' });
+  gsap.set('.left-content-wrapper', { opacity: 1, display: 'flex' });
+  gsap.set('.left-content', { y: "0%", opacity: 1, display: 'block' });
+  gsap.set('.left-greyscale', { x: "-100%" });
+  gsap.set('.brand-content-left', { opacity: 1, display: 'block', y: '0px' });
+
+  gsap.set('.right-content-wrapper', { opacity: 1, display: 'flex' });
+  gsap.set('.right-content', { y: "0%", opacity: 1, display: 'block' });
+  gsap.set('.right-greyscale', { x: "100%" });
+  gsap.set('.brand-content-right', { opacity: 1, display: 'block', y: '0px' });  
 })
 
 breadCrumps.forEach((breadCrump, i) => {
