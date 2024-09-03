@@ -525,36 +525,39 @@ document.querySelector('.cta-button').addEventListener('click', function(event) 
 // Hide Navigation on first load
 // Redirect to Home
 document.querySelector('.logo-home').addEventListener('click', function(e) {
-  e.preventDefault();
-  showSection(0);
 
-  // Make Sure each class 'is-Active' and 'd-block' in slide items remove
-  breadCrumps.forEach((item) => {
-    item.classList.remove('is-Active');
-  });
+  // Return animation when button home clicked
+  // e.preventDefault();
+  // showSection(0);
+  // // Make Sure each class 'is-Active' and 'd-block' in slide items remove
+  // breadCrumps.forEach((item) => {
+  //   item.classList.remove('is-Active');
+  // });
 
-  contents.forEach((item) => {
-    item.classList.remove('d-block');
-  })
+  // contents.forEach((item) => {
+  //   item.classList.remove('d-block');
+  // })
 
-  var onStart = gsap.timeline();
-  onStart.to('.bg-overlay', { opacity: 1 });
-  onStart.to('.logo-mask', 1, { display: 'block', scale: 1, yPercent: 0, ease: "power2.out" });
-  onStart.to('.btn-text', { yPercent: 0, opacity: 1 })
-  onStart.to(nav, { opacity: 0, display: 'flex' });
+  // var onStart = gsap.timeline();
+  // onStart.to('.bg-overlay', { opacity: 1 });
+  // onStart.to('.logo-mask', 1, { display: 'block', scale: 1, yPercent: 0, ease: "power2.out" });
+  // onStart.to('.btn-text', { yPercent: 0, opacity: 1 })
+  // onStart.to(nav, { opacity: 0, display: 'flex' });
 
-  gsap.set('.navy-overlay', { visibility: 'visible', opacity: 0, x: '0px', y: '0px', xPercent: 0, yPercent: 0 });
-  gsap.set('.brand-wrapper', { opacity: 0, display: 'block', x: '0px', y: '0px' });
+  // gsap.set('.navy-overlay', { visibility: 'visible', opacity: 0, x: '0px', y: '0px', xPercent: 0, yPercent: 0 });
+  // gsap.set('.brand-wrapper', { opacity: 0, display: 'block', x: '0px', y: '0px' });
 
-  gsap.set('.left-content-wrapper', { opacity: 1, display: 'flex' });
-  gsap.set('.left-content', { y: "0%", opacity: 1, display: 'block' });
-  gsap.set('.left-greyscale', { x: "-100%", y: 0 });
-  gsap.set('.brand-content-left', { opacity: 1, display: 'block', y: '0px' });
+  // gsap.set('.left-content-wrapper', { opacity: 1, display: 'flex' });
+  // gsap.set('.left-content', { y: "0%", opacity: 1, display: 'block' });
+  // gsap.set('.left-greyscale', { x: "-100%", y: 0 });
+  // gsap.set('.brand-content-left', { opacity: 1, display: 'block', y: '0px' });
 
-  gsap.set('.right-content-wrapper', { opacity: 1, display: 'flex' });
-  gsap.set('.right-content', { y: "0%", opacity: 1, display: 'block' });
-  gsap.set('.right-greyscale', { x: "100%", y: 0 });
-  gsap.set('.brand-content-right', { opacity: 1, display: 'block', y: '0px' });  
+  // gsap.set('.right-content-wrapper', { opacity: 1, display: 'flex' });
+  // gsap.set('.right-content', { y: "0%", opacity: 1, display: 'block' });
+  // gsap.set('.right-greyscale', { x: "100%", y: 0 });
+  // gsap.set('.brand-content-right', { opacity: 1, display: 'block', y: '0px' });  
+
+  window.location.reload()
 })
 
 breadCrumps.forEach((breadCrump, i) => {
