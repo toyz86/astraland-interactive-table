@@ -7,6 +7,7 @@ function buttonOnStated() {
     gsap.to('.btn-text', { yPercent: -100, opacity: 0 })
     gsap.to('.logo-mask', 1, { scale: 200, yPercent: -800, delay: 0.3, ease: "power2.in" });
     gsap.to('.logo-mask', { delay:0.8, display: 'none' });
+    gsap.to(this, { autoAlpha: 0, display: "none", delay: 1 })
     gsap.to('.bg-overlay', { opacity: 0, delay: 0.8 });
     gsap.to('.navy-overlay', { delay: 1, visibility: 'visible', opacity: 1, ease: "power2.out" });
     gsap.to(nav, { delay:0.8, opacity: 1, display: 'flex' });
@@ -26,6 +27,21 @@ const brands = document.querySelectorAll('.opt-btn');
 const btnback = document.querySelector('.prev-nav');
 const btnnext = document.querySelector('.next-nav');
 
+// Function to disable buttons
+function disableButtons() {
+  brands.forEach(brand => {
+    brand.disabled = true;
+  });
+}
+
+// Function to enable buttons
+function enableButtons() {
+  brands.forEach(brand => {
+    brand.disabled = false;
+  });
+}
+
+
 for (let i = 0; i < brands.length; i++) {
   brands[i].addEventListener('click', function() {
     const isActive = this.classList.contains('active');
@@ -37,6 +53,9 @@ for (let i = 0; i < brands.length; i++) {
       }
     }
     
+    // Disable buttons during transition
+    disableButtons();
+
     // Toggle 'active' class on the clicked element
     this.classList.toggle('active');
     
@@ -47,50 +66,89 @@ for (let i = 0; i < brands.length; i++) {
 
     
     if (this.id === 'hongkong') {
-      gsap.to('.navy-overlay', 1, { delay: 0.5, xPercent: isActive ? 0 : 50, ease: "power2.out" });
-      gsap.to('.left-content-wrapper', 1, {
+      gsap.to('.navy-overlay', {
+        duration: 1,
+        delay: 0.5,
+        xPercent: isActive ? 0 : 50,
+        ease: "power2.out",
+        onComplete: enableButtons  // Enable buttons after animation finishes
+      });
+
+      gsap.to('.left-content-wrapper', {
+        duration: 1,
         delay: isActive ? 1.3 : 0,
         opacity: direction === 1 ? 0 : 1,
         display: direction === 1 ? "none" : "flex",
-      })
-      gsap.to('.left-content', 0.5, { y: isActive ? "0%" : "-50%", delay: isActive ? 1 : 0, opacity: opacity, display: isActive ? 'block' : 'none' })
-      gsap.to('.left-greyscale', { x: isActive ? "-100%" : "-50%", delay: 0.3 })
-      
+      });
+
+      gsap.to('.left-content', {
+        duration: 0.5,
+        y: isActive ? "0%" : "-50%",
+        delay: isActive ? 1 : 0,
+        opacity: opacity,
+        display: isActive ? 'block' : 'none'
+      });
+
+      gsap.to('.left-greyscale', {
+        duration: 0.3,
+        x: isActive ? "-100%" : "-50%"
+      });
+
       gsap.fromTo('.brand-content-left', {
-        opacity: direction === 1 ? 0 : 1,  
+        opacity: direction === 1 ? 0 : 1,
         display: direction === 1 ? "none" : "block",
         y: direction === 1 ? '-100px' : '0px',
         duration: isActive ? 0.5 : 1,
-      }, { 
-        delay: isActive ? 0 : 0.75, 
+      }, {
+        delay: isActive ? 0 : 0.75,
         duration: isActive ? 0.5 : 1,
-        opacity: direction === 1 ? 1 : 0,  
+        opacity: direction === 1 ? 1 : 0,
         display: direction === 1 ? "block" : "none",
         y: direction === 1 ? '0px' : '-100px'
-      })
+      });
 
     } else {
-      gsap.to('.navy-overlay', 1, { delay: 0.5, xPercent: isActive ? 0 : -50, ease: "power2.out" });
-      gsap.to('.right-content-wrapper', 1, {
+      gsap.to('.navy-overlay', {
+        duration: 1,
+        delay: 0.5,
+        xPercent: isActive ? 0 : -50,
+        ease: "power2.out",
+        onComplete: enableButtons  // Enable buttons after animation finishes
+      });
+
+      gsap.to('.right-content-wrapper', {
+        duration: 1,
         delay: isActive ? 1.3 : 0,
         opacity: direction === 1 ? 0 : 1,
         display: direction === 1 ? "none" : "flex"
-      })
-      gsap.to('.right-content', 0.5, { y: isActive ? "0%" : "-50%", delay: isActive ? 1 : 0, opacity: opacity, display: isActive === 1 ? 'none' : 'block' }) 
-      gsap.to('.right-greyscale', { x: xGreyscale, delay: 0.3 })
-      
+      });
+
+      gsap.to('.right-content', {
+        duration: 0.5,
+        y: isActive ? "0%" : "-50%",
+        delay: isActive ? 1 : 0,
+        opacity: opacity,
+        display: isActive === 1 ? 'none' : 'block'
+      });
+
+      gsap.to('.right-greyscale', {
+        duration: 0.3,
+        x: xGreyscale
+      });
+
       gsap.fromTo('.brand-content-right', {
-        opacity: direction === 1 ? 0 : 1,  
+        opacity: direction === 1 ? 0 : 1,
         display: direction === 1 ? "none" : "block",
         y: direction === 1 ? '-100px' : '0px'
-      }, { 
-        delay: isActive ? 0 : 0.75, 
+      }, {
+        delay: isActive ? 0 : 0.75,
         duration: isActive ? 0.5 : 1,
-        opacity: direction === 1 ? 1 : 0,  
+        opacity: direction === 1 ? 1 : 0,
         display: direction === 1 ? "block" : "none",
         y: direction === 1 ? '0px' : '-100px'
-      })
+      });
     }
+
   });
 }
 
@@ -125,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-document.querySelectorAll('video.clustervideo').forEach((video) => {
+document.querySelectorAll('video.clustervideo, #starterVideo').forEach((video) => {
   const fadeDuration = 1; // Duration in seconds for audio fade-in/out
   const fadeOutTime = 2; // Time in seconds before the end to start fading out
 
@@ -527,37 +585,39 @@ document.querySelector('.cta-button').addEventListener('click', function(event) 
 document.querySelector('.logo-home').addEventListener('click', function(e) {
 
   // Return animation when button home clicked
-  // e.preventDefault();
-  // showSection(0);
-  // // Make Sure each class 'is-Active' and 'd-block' in slide items remove
-  // breadCrumps.forEach((item) => {
-  //   item.classList.remove('is-Active');
-  // });
+  e.preventDefault();
+  showSection(0);
+  // Make Sure each class 'is-Active' and 'd-block' in slide items remove
+  breadCrumps.forEach((item) => {
+    item.classList.remove('is-Active');
+  });
 
-  // contents.forEach((item) => {
-  //   item.classList.remove('d-block');
-  // })
+  contents.forEach((item) => {
+    item.classList.remove('d-block');
+  })
 
-  // var onStart = gsap.timeline();
-  // onStart.to('.bg-overlay', { opacity: 1 });
-  // onStart.to('.logo-mask', 1, { display: 'block', scale: 1, yPercent: 0, ease: "power2.out" });
-  // onStart.to('.btn-text', { yPercent: 0, opacity: 1 })
-  // onStart.to(nav, { opacity: 0, display: 'flex' });
+  var onStart = gsap.timeline();
+  onStart.to('.bg-overlay', { opacity: 1 });
+  onStart.to('.logo-mask', 1, { display: 'block', scale: 1, yPercent: 0, ease: "power2.out" });
+  onStart.to('.btn-text', { yPercent: 0, opacity: 1 })
+  
+  gsap.to(nav, { opacity: 0, display: 'flex' });
+  gsap.to(".start-btn", { display: "block", autoAlpha: 1 })
+  gsap.set('.navy-overlay', { visibility: 'visible', opacity: 0, x: '0px', y: '0px', xPercent: 0, yPercent: 0 });
+  gsap.set('.brand-wrapper', { opacity: 0, display: 'block', x: '0px', y: '0px' });
 
-  // gsap.set('.navy-overlay', { visibility: 'visible', opacity: 0, x: '0px', y: '0px', xPercent: 0, yPercent: 0 });
-  // gsap.set('.brand-wrapper', { opacity: 0, display: 'block', x: '0px', y: '0px' });
+  gsap.set('.left-content-wrapper', { opacity: 1, display: 'flex' });
+  gsap.set('.left-content', { y: "0%", opacity: 1, display: 'block' });
+  gsap.set('.left-greyscale', { x: "-100%", y: 0 });
+  gsap.set('.brand-content-left', { opacity: 1, display: 'block', y: '0px' });
 
-  // gsap.set('.left-content-wrapper', { opacity: 1, display: 'flex' });
-  // gsap.set('.left-content', { y: "0%", opacity: 1, display: 'block' });
-  // gsap.set('.left-greyscale', { x: "-100%", y: 0 });
-  // gsap.set('.brand-content-left', { opacity: 1, display: 'block', y: '0px' });
+  gsap.set('.right-content-wrapper', { opacity: 1, display: 'flex' });
+  gsap.set('.right-content', { y: "0%", opacity: 1, display: 'block' });
+  gsap.set('.right-greyscale', { x: "100%", y: 0 });
+  gsap.set('.brand-content-right', { opacity: 1, display: 'block', y: '0px' });
+  gsap.set('.line-divider', { display: 'none', autoAlpha: 0 } );
 
-  // gsap.set('.right-content-wrapper', { opacity: 1, display: 'flex' });
-  // gsap.set('.right-content', { y: "0%", opacity: 1, display: 'block' });
-  // gsap.set('.right-greyscale', { x: "100%", y: 0 });
-  // gsap.set('.brand-content-right', { opacity: 1, display: 'block', y: '0px' });  
-
-  window.location.reload()
+  // window.location.reload()
 })
 
 breadCrumps.forEach((breadCrump, i) => {
