@@ -3,7 +3,8 @@ const nav = document.querySelector(".navigation")
 
 // Animation Astra icon on BEGINING
 function buttonOnStated() {
-  document.querySelector('.start-btn').addEventListener('click', function() {
+  const btnStart = document.querySelector('.start-btn');
+  btnStart.addEventListener('click', function() {
     gsap.to('.btn-text', { yPercent: -100, opacity: 0 })
     gsap.to('.logo-mask', 1, { scale: 200, yPercent: -800, delay: 0.3, ease: "power2.in" });
     gsap.to('.logo-mask', { delay:0.8, display: 'none' });
@@ -582,27 +583,42 @@ document.querySelector('.cta-button').addEventListener('click', function(event) 
 
 // Hide Navigation on first load
 // Redirect to Home
-document.querySelector('.logo-home').addEventListener('click', function(e) {
+const logoHome = document.querySelector('.logo-home');
+let isAnimating = false; // Flag to track if the animation is in progress
+
+logoHome.addEventListener('click', function(e) {
+  if (isAnimating) return; // Prevent click during animation
+
+  isAnimating = true; // Set the flag to true when animation starts
+  logoHome.style.pointerEvents = 'none'; // Disable pointer events to prevent further clicks
 
   // Return animation when button home clicked
   e.preventDefault();
   showSection(0);
-  // Make Sure each class 'is-Active' and 'd-block' in slide items remove
+
+  // Make Sure each class 'is-Active' and 'd-block' in slide items is removed
   breadCrumps.forEach((item) => {
     item.classList.remove('is-Active');
   });
 
   contents.forEach((item) => {
     item.classList.remove('d-block');
-  })
+  });
 
-  var onStart = gsap.timeline();
+  var onStart = gsap.timeline({
+    onComplete: function() {
+      isAnimating = false; // Reset the flag when animation is done
+      logoHome.style.pointerEvents = 'auto'; // Re-enable pointer events after animation
+    }
+  });
+
+
   onStart.to('.bg-overlay', { opacity: 1 });
   onStart.to('.logo-mask', 1, { display: 'block', scale: 1, yPercent: 0, ease: "power2.out" });
-  onStart.to('.btn-text', { yPercent: 0, opacity: 1 })
+  onStart.to('.btn-text', { yPercent: 0, opacity: 1 });
   
-  gsap.to(nav, { opacity: 0, display: 'flex' });
-  gsap.to(".start-btn", { display: "block", autoAlpha: 1 })
+  gsap.to(nav, { opacity: 0, display: 'none' });
+  gsap.to(".start-btn", { display: "block", autoAlpha: 1 });
   gsap.set('.navy-overlay', { visibility: 'visible', opacity: 0, x: '0px', y: '0px', xPercent: 0, yPercent: 0 });
   gsap.set('.brand-wrapper', { opacity: 0, display: 'block', x: '0px', y: '0px' });
 
@@ -615,10 +631,11 @@ document.querySelector('.logo-home').addEventListener('click', function(e) {
   gsap.set('.right-content', { y: "0%", opacity: 1, display: 'block' });
   gsap.set('.right-greyscale', { x: "100%", y: 0 });
   gsap.set('.brand-content-right', { opacity: 1, display: 'block', y: '0px' });
-  gsap.set('.line-divider', { display: 'none', autoAlpha: 0 } );
+  gsap.set('.line-divider', { display: 'none', autoAlpha: 0 });
 
-  // window.location.reload()
-})
+  // window.location.reload() (optional)
+});
+
 
 breadCrumps.forEach((breadCrump, i) => {
   breadCrump.addEventListener('click', function() {
